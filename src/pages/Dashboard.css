@@ -1,38 +1,37 @@
-.dashboard-container {
-    max-width: 600px;
-    margin: 3rem auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 24px rgba(46,108,246,0.09);
-    padding: 2.2rem 2rem;
-    color: #2240a2;
-  }
-  
-  .dashboard-container h1 {
-    color: #2e6cf6;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .dashboard-info p {
-    font-size: 1.08rem;
-    margin-bottom: 1rem;
-  }
-  
-  .dashboard-info ul {
-    padding-left: 1.3rem;
-    color: #2e6cf6;
-  }
-  
-  .dashboard-info li {
-    margin-bottom: 0.6rem;
-  }
-  
-  .dashboard-info a {
-    color: #1b4fb8;
-    text-decoration: none;
-  }
-  
-  .dashboard-info a:hover {
-    text-decoration: underline;
-  }
+.tw-dashboard {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.tw-dashboard h1 {
+  font-size: 32px;
+  color: #e75480;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.dashboard-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background-color: #fafafa;
+}
+
+.dashboard-section h2 {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.dashboard-section ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.dashboard-section li {
+  margin-bottom: 8px;
+}

@@ -1,25 +1,46 @@
-.about-container {
-    max-width: 700px;
-    margin: 3rem auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 24px rgba(46,108,246,0.09);
-    padding: 2.2rem 2rem;
-    color: #2240a2;
-  }
-  
-  .about-container h1 {
-    color: #2e6cf6;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-container ul {
-    margin: 1.5rem 0 1.5rem 1.2rem;
-    padding: 0;
-    color: #4b587c;
-  }
-  
-  .about-container p {
-    font-size: 1.08rem;
-  }
+.tw-about {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.about-intro h1 {
+  font-size: 32px;
+  color: #e75480;
+  margin-bottom: 16px;
+}
+
+.about-intro p,
+.about-mission p,
+.about-belief p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.about-mission h2,
+.about-belief h2 {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.about-cta {
+  margin-top: 40px;
+}
+
+.about-btn {
+  padding: 12px 24px;
+  background-color: #e75480;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.about-btn:hover {
+  background-color: #c94f70;
+}

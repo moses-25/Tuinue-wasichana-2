@@ -1,0 +1,51 @@
+.tw-charity-details {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .charity-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .charity-header img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .charity-text h1 {
+    font-size: 28px;
+    color: #e75480;
+  }
+  
+  .charity-text .location {
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 12px;
+  }
+  
+  .charity-text p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 20px;
+  }
+  
+  .impact-stories h2 {
+    margin-top: 60px;
+    text-align: center;
+    color: #e75480;
+    margin-bottom: 24px;
+  }
+  
+  .stories-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

@@ -1,0 +1,49 @@
+.tw-donate {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  .tw-donate h1 {
+    font-size: 32px;
+    color: #e75480;
+    margin-bottom: 12px;
+  }
+  
+  .tw-donate p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+  
+  .donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+  }
+  
+  .donation-form label {
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .donation-form input[type="number"],
+  .donation-form select {
+    margin-top: 6px;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
