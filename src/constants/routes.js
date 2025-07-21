@@ -1,0 +1,18 @@
+export const ROUTES = {
+    HOME: "/",
+    ABOUT: "/about",
+    LOGIN: "/login",
+    REGISTER: "/register",
+    DASHBOARD: "/dashboard",
+    CHARITIES: "/charities",
+    CHARITY_DETAILS: "/charities/:id",
+    CHARITY_APPLY: "/charities/apply",
+    DONATE: "/donate",
+    DONATIONS: "/donations",
+    STORIES: "/stories",
+    STORY_DETAILS: "/stories/:id",
+    ADMIN: "/admin",
+    ADMIN_DASHBOARD: "/admin/dashboard",
+    ADMIN_CHARITY_APPROVAL: "/admin/charity-approval",
+    NOT_FOUND: "*",
+  };
