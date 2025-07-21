@@ -1,37 +1,48 @@
 .tw-dashboard {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .tw-dashboard h1 {
   font-size: 32px;
   color: #e75480;
-  margin-bottom: 32px;
-  text-align: center;
+  margin-bottom: 8px;
+}
+
+.tw-dashboard p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .dashboard-section {
   margin-bottom: 40px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  background-color: #fafafa;
+  text-align: left;
 }
 
 .dashboard-section h2 {
   font-size: 20px;
-  color: #444;
+  color: #333;
   margin-bottom: 12px;
 }
 
-.dashboard-section ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-  color: #555;
+.donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
 }
 
-.dashboard-section li {
-  margin-bottom: 8px;
+.donation-table th,
+.donation-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
+
+.donation-table th {
+  background-color: #f4f4f4;
+  color: #444;
+}
+

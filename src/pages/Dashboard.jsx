@@ -1,51 +1,67 @@
 import React from 'react';
 import './Dashboard.css';
+import Button from '../../components/Button/Button';
 
 const Dashboard = () => {
-  // You can later replace this with actual user data & roles
-  const userType = 'donor'; // Change this to: 'charity' or 'admin'
+  const donations = [
+    {
+      id: 1,
+      charity: 'GirlPower Foundation',
+      amount: 1000,
+      date: '2025-07-01',
+      recurring: true
+    },
+    {
+      id: 2,
+      charity: 'Books4Girls',
+      amount: 500,
+      date: '2025-06-10',
+      recurring: false
+    }
+  ];
 
   return (
     <div className="tw-dashboard">
-      <h1>Welcome to Your Dashboard</h1>
+      <h1>Your Dashboard</h1>
+      <p>Track your impact, donations, and profile settings here.</p>
 
-      {userType === 'donor' && (
-        <section className="dashboard-section">
-          <h2>Your Donations</h2>
-          <ul>
-            <li>Total Donated: KES 8,000</li>
-            <li>Recurring: Yes</li>
-            <li>Last Donation: July 15, 2025</li>
-          </ul>
+      <div className="dashboard-section">
+        <h2>Donation History</h2>
+        <table className="donation-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Charity</th>
+              <th>Amount (KES)</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {donations.map((donation) => (
+              <tr key={donation.id}>
+                <td>{donation.date}</td>
+                <td>{donation.charity}</td>
+                <td>{donation.amount}</td>
+                <td>{donation.recurring ? 'Monthly' : 'One-Time'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-          <h2>Stories You've Helped Write</h2>
-          <p>View real impact from your contributions.</p>
-        </section>
-      )}
+      <div className="dashboard-section">
+        <h2>Manage Your Donations</h2>
+        <Button text="Edit Payment Info" />
+        <Button text="Cancel Recurring Donation" />
+      </div>
 
-      {userType === 'charity' && (
-        <section className="dashboard-section">
-          <h2>Charity Summary</h2>
-          <ul>
-            <li>Total Received: KES 32,000</li>
-            <li>Stories Posted: 4</li>
-            <li>Beneficiaries Managed: 12</li>
-          </ul>
-        </section>
-      )}
-
-      {userType === 'admin' && (
-        <section className="dashboard-section">
-          <h2>Admin Tools</h2>
-          <ul>
-            <li>Pending Charity Applications: 3</li>
-            <li>Total Registered Charities: 25</li>
-            <li>Donations Processed: 1,200</li>
-          </ul>
-        </section>
-      )}
+      <div className="dashboard-section">
+        <h2>Saved Charities</h2>
+        <p>(Coming Soon)</p>
+      </div>
     </div>
   );
 };
 
 export default Dashboard;
+
