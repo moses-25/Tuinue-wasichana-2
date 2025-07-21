@@ -1,60 +1,65 @@
 import React from 'react';
 import './CharityDetails.css';
-import StoryCard from '../../components/StoryCard/StoryCard';
 import Button from '../../components/Button/Button';
+import StoryCard from '../../components/StoryCard/StoryCard';
+
+const charity = {
+  name: 'GirlPower Foundation',
+  logo: '/assets/images/girlpower-logo.png',
+  mission: 'Empowering young girls through education and life skills training.',
+  raised: 84200,
+  target: 100000,
+  location: 'Kibera, Nairobi',
+  impactStories: [
+    {
+      image: '/assets/images/grace.jpg',
+      name: 'Grace',
+      age: '13',
+      story: 'With GirlPower’s help, Grace received school meals and confidence mentorship sessions.'
+    },
+    {
+      image: '/assets/images/nyambura.jpg',
+      name: 'Nyambura',
+      age: '11',
+      story: 'She no longer misses school during her period thanks to hygiene support.'
+    }
+  ]
+};
 
 const CharityDetails = () => {
-  const charity = {
-    name: "Girls First Foundation",
-    location: "Kisumu, Kenya",
-    mission: "Empowering rural girls through education and menstrual health.",
-    description:
-      "Girls First Foundation works to ensure no girl misses school due to lack of fees or access to menstrual hygiene products. Through your support, we provide education sponsorships, hygiene kits, and mentorship programs.",
-    image: "/assets/images/girlsfirst.jpg",
-    stories: [
-      {
-        image: "/assets/images/achieng.jpg",
-        name: "Achieng",
-        age: "14",
-        story: "Thanks to your donations, I received pads and books to continue learning!"
-      },
-      {
-        image: "/assets/images/zahara.jpg",
-        name: "Zahara",
-        age: "12",
-        story: "I walk confidently to school every day because I now have a proper uniform."
-      }
-    ]
-  };
+  const progress = Math.floor((charity.raised / charity.target) * 100);
 
   return (
     <div className="tw-charity-details">
       <div className="charity-header">
-        <img src={charity.image} alt={charity.name} />
-        <div className="charity-text">
+        <img src={charity.logo} alt="Charity Logo" />
+        <div>
           <h1>{charity.name}</h1>
           <p className="location">{charity.location}</p>
-          <p>{charity.description}</p>
-          <Button text="Donate Now" />
+          <p className="mission">{charity.mission}</p>
         </div>
       </div>
 
-      <section className="impact-stories">
-        <h2>Stories of Impact</h2>
-        <div className="stories-grid">
-          {charity.stories.map((story, index) => (
-            <StoryCard
-              key={index}
-              image={story.image}
-              name={story.name}
-              age={story.age}
-              story={story.story}
-            />
+      <div className="donation-progress">
+        <p>Raised KES {charity.raised.toLocaleString()} of KES {charity.target.toLocaleString()}</p>
+        <div className="progress-bar">
+          <div className="filled" style={{ width: `${progress}%` }}></div>
+        </div>
+      </div>
+
+      <Button text="Donate Now" />
+
+      <div className="impact-stories">
+        <h2>Impact Stories</h2>
+        <div className="stories-list">
+          {charity.impactStories.map((story, idx) => (
+            <StoryCard key={idx} {...story} />
           ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 };
 
 export default CharityDetails;
+
