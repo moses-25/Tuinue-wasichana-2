@@ -1,18 +1,16 @@
-import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import "./MainLayout.css";
+import React from 'react';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import './MainLayout.css';
 
-const MainLayout = ({ children, sidebarLinks = [], showSidebar = true }) => (
-  <div className="main-layout">
-    <Navbar />
-    <div className="main-layout-body">
-      {showSidebar && (
-        <Sidebar links={sidebarLinks} isOpen={true} />
-      )}
-      <main className="main-layout-content">{children}</main>
+const MainLayout = ({ children }) => {
+  return (
+    <div className="tw-main-layout">
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
     </div>
-  </div>
-);
+  );
+};
 
 export default MainLayout;

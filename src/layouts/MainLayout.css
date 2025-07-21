@@ -1,24 +1,10 @@
-.main-layout {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #f7f9fc;
-  }
-  
-  .main-layout-body {
-    display: flex;
-    flex: 1;
-  }
-  
-  .main-layout-content {
-    flex: 1;
-    padding: 2.5rem 2rem;
-    margin-left: 220px; /* width of sidebar */
-  }
-  
-  @media (max-width: 768px) {
-    .main-layout-content {
-      margin-left: 0;
-      padding: 1rem;
-    }
-  }
+.tw-main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  padding-top: 80px; /* space for fixed navbar if needed */
+}
