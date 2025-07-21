@@ -1,0 +1,38 @@
+.dashboard-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 24px rgba(46,108,246,0.09);
+    padding: 2.2rem 2rem;
+    color: #2240a2;
+  }
+  
+  .dashboard-container h1 {
+    color: #2e6cf6;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-info p {
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-info ul {
+    padding-left: 1.3rem;
+    color: #2e6cf6;
+  }
+  
+  .dashboard-info li {
+    margin-bottom: 0.6rem;
+  }
+  
+  .dashboard-info a {
+    color: #1b4fb8;
+    text-decoration: none;
+  }
+  
+  .dashboard-info a:hover {
+    text-decoration: underline;
+  }

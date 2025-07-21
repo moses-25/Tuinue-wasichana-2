@@ -1,0 +1,36 @@
+.notfound-container {
+    max-width: 480px;
+    margin: 6rem auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 24px rgba(46,108,246,0.08);
+    padding: 2.2rem 2rem;
+    text-align: center;
+    color: #2240a2;
+  }
+  
+  .notfound-container h1 {
+    color: #df2c2c;
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .notfound-container p {
+    font-size: 1.07rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .notfound-home-link {
+    display: inline-block;
+    background: #2e6cf6;
+    color: #fff;
+    padding: 0.7rem 1.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.18s;
+  }
+  
+  .notfound-home-link:hover {
+    background: #1b4fb8;
+  }
