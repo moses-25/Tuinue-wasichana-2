@@ -1,0 +1,59 @@
+.charity-details-container {
+    max-width: 600px;
+    margin: 2.2rem auto;
+    padding: 1.7rem;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e6eaf5;
+    box-shadow: 0 2px 24px rgba(46,108,246,0.08);
+  }
+  
+  .charity-details-back {
+    background: none;
+    color: #2e6cf6;
+    border: none;
+    font-size: 1.01rem;
+    cursor: pointer;
+    margin-bottom: 1.1rem;
+  }
+  
+  .charity-details-header {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    margin-bottom: 1.4rem;
+  }
+  
+  .charity-details-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2.5px solid #f3f6fc;
+    background: #f3f6fc;
+  }
+  
+  .charity-details-header h2 {
+    margin: 0;
+    color: #2e6cf6;
+    font-size: 1.6rem;
+  }
+  
+  .charity-details-body p {
+    color: #3b4860;
+    font-size: 1.08rem;
+    margin-bottom: 1.3rem;
+  }
+  
+  .charity-details-info {
+    display: flex;
+    gap: 2.3rem;
+    color: #2240a2;
+    font-size: 1.02rem;
+  }
+  
+  .charity-details-empty {
+    color: #999;
+    text-align: center;
+    margin-top: 2rem;
+  }
