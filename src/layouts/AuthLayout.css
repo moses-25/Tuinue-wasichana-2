@@ -1,0 +1,16 @@
+.auth-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf0fc;
+  }
+  
+  .auth-layout-content {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 24px rgba(46,108,246,0.10);
+    padding: 2.2rem 2rem;
+  }
