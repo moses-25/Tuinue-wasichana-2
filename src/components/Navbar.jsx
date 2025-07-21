@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav className="tw-navbar">
-      <div className="navbar-logo">
-        <Link to="/">Tuinue Wasichana</Link>
+      <div className="navbar-container">
+        <Link to="/" className="logo">
+          Tuinue <span>Wasichana</span>
+        </Link>
+
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/programs">Programs</Link>
+          <Link to="/stories">Stories</Link>
+          <Link to="/charities">Charities</Link>
+          <Link to="/faq">FAQ</Link>
+          <Link to="/contact">Contact</Link>
+        </div>
+
+        <div className="nav-actions">
+          <Link to="/donate">
+            <Button text="Donate" />
+          </Link>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+        </div>
       </div>
-      <ul className="navbar-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/programs">Programs</Link></li>
-        <li><Link to="/charities">Charities</Link></li>
-        <li><Link to="/stories">Stories</Link></li>
-        <li><Link to="/donate">Donate</Link></li>
-        <li><Link to="/login" className="login-btn">Login</Link></li>
-      </ul>
     </nav>
   );
 };
 
 export default Navbar;
+
