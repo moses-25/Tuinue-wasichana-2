@@ -1,0 +1,36 @@
+.story-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .story-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .story-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .story-content {
+    padding: 16px;
+  }
+  
+  .story-content h4 {
+    font-size: 16px;
+    color: #e75480;
+    margin-bottom: 8px;
+  }
+  
+  .story-content p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+  }
+  

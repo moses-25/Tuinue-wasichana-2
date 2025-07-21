@@ -1,5 +1,5 @@
-import React from "react";
-import "./Modal.css";
+import React from 'react';
+import './Modal.css';
 
 const Modal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
@@ -7,11 +7,11 @@ const Modal = ({ isOpen, onClose, title, children }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        {title && <div className="modal-header">
-          <h3>{title}</h3>
-          <button className="modal-close-btn" onClick={onClose}>×</button>
-        </div>}
-        <div className="modal-body">{children}</div>
+        <h3>{title}</h3>
+        <div className="modal-body">
+          {children}
+        </div>
+        <button className="modal-close" onClick={onClose}>Close</button>
       </div>
     </div>
   );

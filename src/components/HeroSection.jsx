@@ -1,7 +1,7 @@
 import React from 'react';
 import './HeroSection.css';
 import Button from '../Button/Button';
-import heroImg from '../../assets/images/hero-girl.png'; // Replace with your real image path
+import heroImg from '../../assets/images/image 1.jpg'; // Replace with your real image path
 
 const HeroSection = () => {
   return (
