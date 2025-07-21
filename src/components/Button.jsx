@@ -1,23 +1,10 @@
-import React from "react";
-import "./Button.css";
+import React from 'react';
+import './Button.css';
 
-const Button = ({
-  children,
-  onClick,
-  type = "button",
-  disabled = false,
-  className = "",
-  ...props
-}) => {
+const Button = ({ text, onClick, type = 'button', className = '' }) => {
   return (
-    <button
-      className={`custom-button ${className}`}
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
+    <button className={`tw-button ${className}`} onClick={onClick} type={type}>
+      {text}
     </button>
   );
 };
