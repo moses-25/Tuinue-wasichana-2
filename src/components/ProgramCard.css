@@ -1,33 +1,38 @@
-.program-card {
-    background-color: #fff;
+.tw-program-card {
+    background: #ffffff;
     border: 1px solid #eee;
+    padding: 20px;
     border-radius: 12px;
-    padding: 24px 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     text-align: center;
-    transition: transform 0.3s ease;
-    max-width: 300px;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 240px;
   }
-  
-  .program-card:hover {
+
+  .tw-program-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
-  
-  .program-icon img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 16px;
+
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
   }
-  
-  .program-card h3 {
+
+  .icon-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+  .tw-program-card h3 {
     font-size: 18px;
     color: #e75480;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-  
-  .program-card p {
+
+  .tw-program-card p {
     font-size: 14px;
     color: #555;
-    line-height: 1.5;
   }
-  
