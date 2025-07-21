@@ -1,13 +1,16 @@
+/*************  ✨ Windsurf Command 🌟  *************/
 .main-layout {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     background: #f7f9fc;
+    overflow: hidden;
   }
   
   .main-layout-body {
     display: flex;
     flex: 1;
+    overflow: auto;
   }
   
   .main-layout-content {
@@ -22,3 +25,4 @@
       padding: 1rem;
     }
   }
+/*******  1867cd96-a443-4164-8cc6-fbb6dcd9de90  *******/
