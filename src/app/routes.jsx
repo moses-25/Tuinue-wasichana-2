@@ -1,8 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import routes from '../constants/routes';
-import MainLayout from '../layouts/MainLayout/MainLayout';
-import AuthLayout from '../layouts/AuthLayout/AuthLayout';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from '../pages/Home/Home';
@@ -15,37 +12,32 @@ import Donate from '../pages/Donate/Donate';
 import FAQ from '../pages/FAQ/FAQ';
 import Contact from '../pages/Contact/Contact';
 import Dashboard from '../pages/Dashboard/Dashboard';
-import Login from '../features/auth/Login/Login';
-import Register from '../features/auth/Register/Register';
 import NotFound from '../pages/NotFound/NotFound';
 
-const AppRoutes = () => {
+// Layout (optional)
+import MainLayout from '../layouts/MainLayout/MainLayout';
+
+function AppRoutes() {
   return (
-    <Routes>
-      {/* Main layout routes */}
-      <Route element={<MainLayout />}>
-        <Route path={routes.HOME} element={<Home />} />
-        <Route path={routes.ABOUT} element={<About />} />
-        <Route path={routes.PROGRAMS} element={<Programs />} />
-        <Route path={routes.STORIES} element={<Stories />} />
-        <Route path={routes.CHARITIES} element={<Charities />} />
-        <Route path={routes.CHARITY_DETAILS} element={<CharityDetails />} />
-        <Route path={routes.DONATE} element={<Donate />} />
-        <Route path={routes.FAQ} element={<FAQ />} />
-        <Route path={routes.CONTACT} element={<Contact />} />
-        <Route path={routes.DASHBOARD} element={<Dashboard />} />
-      </Route>
-
-      {/* Auth layout routes */}
-      <Route element={<AuthLayout />}>
-        <Route path={routes.LOGIN} element={<Login />} />
-        <Route path={routes.REGISTER} element={<Register />} />
-      </Route>
-
-      {/* 404 */}
-      <Route path={routes.NOT_FOUND} element={<NotFound />} />
-    </Routes>
+    <Router>
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/programs" element={<Programs />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="/charities" element={<Charities />} />
+          <Route path="/charities/:id" element={<CharityDetails />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </MainLayout>
+    </Router>
   );
-};
+}
 
 export default AppRoutes;
+
