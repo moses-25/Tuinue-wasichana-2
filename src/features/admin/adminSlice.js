@@ -1,95 +1,107 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  fetchPendingCharities,
-  approveCharity,
-  rejectCharity,
-  fetchAdminStats,
-  fetchRecentCharities,
-  fetchRecentDonations,
-} from "./adminAPI";
+  getAdminStatsAPI,
+  getPendingCharitiesAPI,
+  approveCharityAPI,
+  rejectCharityAPI
+} from './adminAPI';
 
-const initialState = {
-  stats: {},
-  pendingCharities: [],
-  recentCharities: [],
-  recentDonations: [],
-  status: "idle",
-  error: null,
-};
-
-export const getPendingCharities = createAsyncThunk(
-  "admin/getPendingCharities",
-  async () => {
-    return await fetchPendingCharities();
+// Thunks
+export const fetchAdminStats = createAsyncThunk(
+  'admin/fetchStats',
+  async (_, thunkAPI) => {
+    try {
+      const res = await getAdminStatsAPI();
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const approveCharityById = createAsyncThunk(
-  "admin/approveCharityById",
-  async (id) => {
-    await approveCharity(id);
-    return id;
+export const fetchPendingCharities = createAsyncThunk(
+  'admin/fetchPendingCharities',
+  async (_, thunkAPI) => {
+    try {
+      const res = await getPendingCharitiesAPI();
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const rejectCharityById = createAsyncThunk(
-  "admin/rejectCharityById",
-  async (id) => {
-    await rejectCharity(id);
-    return id;
+export const approveCharity = createAsyncThunk(
+  'admin/approveCharity',
+  async (id, thunkAPI) => {
+    try {
+      await approveCharityAPI(id);
+      return id;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const getAdminStats = createAsyncThunk(
-  "admin/getAdminStats",
-  async () => {
-    return await fetchAdminStats();
+export const rejectCharity = createAsyncThunk(
+  'admin/rejectCharity',
+  async (id, thunkAPI) => {
+    try {
+      await rejectCharityAPI(id);
+      return id;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const getRecentCharities = createAsyncThunk(
-  "admin/getRecentCharities",
-  async () => {
-    return await fetchRecentCharities();
-  }
-);
-
-export const getRecentDonations = createAsyncThunk(
-  "admin/getRecentDonations",
-  async () => {
-    return await fetchRecentDonations();
-  }
-);
-
+// Slice
 const adminSlice = createSlice({
-  name: "admin",
-  initialState,
+  name: 'admin',
+  initialState: {
+    stats: {},
+    pendingCharities: [],
+    loading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getPendingCharities.fulfilled, (state, action) => {
-        state.pendingCharities = action.payload;
+      // Dashboard Stats
+      .addCase(fetchAdminStats.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(approveCharityById.fulfilled, (state, action) => {
-        state.pendingCharities = state.pendingCharities.filter(
-          (c) => c.id !== action.payload
-        );
-      })
-      .addCase(rejectCharityById.fulfilled, (state, action) => {
-        state.pendingCharities = state.pendingCharities.filter(
-          (c) => c.id !== action.payload
-        );
-      })
-      .addCase(getAdminStats.fulfilled, (state, action) => {
+      .addCase(fetchAdminStats.fulfilled, (state, action) => {
+        state.loading = false;
         state.stats = action.payload;
       })
-      .addCase(getRecentCharities.fulfilled, (state, action) => {
-        state.recentCharities = action.payload;
+      .addCase(fetchAdminStats.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
-      .addCase(getRecentDonations.fulfilled, (state, action) => {
-        state.recentDonations = action.payload;
+      // Pending Charities
+      .addCase(fetchPendingCharities.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchPendingCharities.fulfilled, (state, action) => {
+        state.loading = false;
+        state.pendingCharities = action.payload;
+      })
+      .addCase(fetchPendingCharities.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Approve Charity
+      .addCase(approveCharity.fulfilled, (state, action) => {
+        state.pendingCharities = state.pendingCharities.filter(c => c.id !== action.payload);
+      })
+      // Reject Charity
+      .addCase(rejectCharity.fulfilled, (state, action) => {
+        state.pendingCharities = state.pendingCharities.filter(c => c.id !== action.payload);
       });
-  },
+  }
 });
 
 export default adminSlice.reducer;
