@@ -1,16 +1,26 @@
-export function get(url, config = {}) {
-  // Return mock data or empty object
-  return Promise.resolve({});
-}
+import axiosInstance from './axiosInstance';
 
-export function post(url, data = {}, config = {}) {
-  return Promise.resolve({});
-}
+// Example: Ping server or check user token
+export const pingServer = async () => {
+  const res = await axiosInstance.get('/ping');
+  return res.data;
+};
 
-export function put(url, data = {}, config = {}) {
-  return Promise.resolve({});
-}
+// Example: Generic POST helper
+export const postData = async (endpoint, payload) => {
+  const res = await axiosInstance.post(endpoint, payload);
+  return res.data;
+};
 
-export function del(url, config = {}) {
-  return Promise.resolve({});
-}
+// Example: File upload
+export const uploadFile = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  const res = await axiosInstance.post('/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return res.data;
+};
+
