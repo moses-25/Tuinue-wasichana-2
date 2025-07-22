@@ -1,24 +1,16 @@
-// Example API file for authentication
+import axios from 'axios';
 
-// Replace with your backend API URL
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5173/api";
+// Optional: Set a base URL (you can move this to a central file)
+const API_BASE = 'https://your-backend-api.com/api/auth'; //replace with your actual API base URL)
 
-export async function loginUser({ email, password }) {
-  const res = await fetch(`${API_URL}/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  });
-  if (!res.ok) throw new Error("Login failed");
-  return res.json();
-}
+// Login API
+export const loginUserAPI = async (credentials) => {
+  const response = await axios.post(`${API_BASE}/login`, credentials);
+  return response;
+};
 
-export async function registerUser({ name, email, password }) {
-  const res = await fetch(`${API_URL}/auth/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, password })
-  });
-  if (!res.ok) throw new Error("Registration failed");
-  return res.json();
-}
+// Register API
+export const registerUserAPI = async (userData) => {
+  const response = await axios.post(`${API_BASE}/register`, userData);
+  return response;
+};
