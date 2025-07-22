@@ -1,36 +1,39 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export function useFetch(url, options = {}, dependencies = []) {
+const useFetch = (url, options = {}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
-    setLoading(true);
-    setError("");
-    setData(null);
 
-    fetch(url, options)
-      .then(async (res) => {
-        if (!res.ok) throw new Error(await res.text() || "Fetch failed");
-        return res.json();
-      })
-      .then((data) => {
-        if (isMounted) setData(data);
-      })
-      .catch((err) => {
-        if (isMounted) setError(err.message || "Fetch error");
-      })
-      .finally(() => {
-        if (isMounted) setLoading(false);
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url, options);
+        if (isMounted) {
+          setData(response.data);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message || 'An error occurred');
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
 
     return () => {
       isMounted = false;
     };
-    // eslint-disable-next-line
-  }, dependencies);
+  }, [url]);
 
   return { data, loading, error };
-}
+};
+
+export default useFetch;

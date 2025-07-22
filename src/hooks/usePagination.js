@@ -1,30 +1,34 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export function usePagination(data = [], itemsPerPage = 10) {
+const usePagination = (data = [], itemsPerPage = 6) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
-
+  const totalPages = Math.ceil(data.length / itemsPerPage);
   const currentData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const goToPage = (page) => {
-    if (page < 1 || page > totalPages) return;
-    setCurrentPage(page);
+  const goToNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
-  const nextPage = () => goToPage(currentPage + 1);
-  const prevPage = () => goToPage(currentPage - 1);
+  const goToPrevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const setPage = (pageNum) => {
+    setCurrentPage(() => Math.min(Math.max(pageNum, 1), totalPages));
+  };
 
   return {
+    currentData,
     currentPage,
     totalPages,
-    currentData,
-    goToPage,
-    nextPage,
-    prevPage,
-    setCurrentPage,
+    goToNextPage,
+    goToPrevPage,
+    setPage,
   };
-}
+};
+
+export default usePagination;
