@@ -7,9 +7,9 @@ const CharityApproval = () => {
   const dispatch = useDispatch();
   const { pendingCharities, loading, error } = useSelector((state) => state.admin);
 
-  useEffect(() => {
-    dispatch(fetchPendingCharities());
-  }, [dispatch]);
+  //useEffect(() => {
+    //dispatch(fetchPendingCharities());
+  //}, [dispatch]);
 
   const handleApprove = (id) => {
     dispatch(approveCharity(id));

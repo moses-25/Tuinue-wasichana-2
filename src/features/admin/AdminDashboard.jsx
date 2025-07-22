@@ -7,9 +7,9 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
   const { stats, loading, error } = useSelector((state) => state.admin);
 
-  useEffect(() => {
-    dispatch(fetchAdminStats());
-  }, [dispatch]);
+  //useEffect(() => {
+    //dispatch(fetchAdminStats());
+  //}, [dispatch]);
 
   if (loading) return <p>Loading admin data...</p>;
   if (error) return <p className="error">{error}</p>;

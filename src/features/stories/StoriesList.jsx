@@ -8,9 +8,9 @@ const StoriesList = () => {
   const dispatch = useDispatch();
   const { stories, loading, error } = useSelector((state) => state.stories);
 
-  useEffect(() => {
-    dispatch(fetchStories());
-  }, [dispatch]);
+  //useEffect(() => {
+    //dispatch(fetchStories());
+  //}, [dispatch]);
 
   if (loading) return <p>Loading stories...</p>;
   if (error) return <p className="error">{error}</p>;

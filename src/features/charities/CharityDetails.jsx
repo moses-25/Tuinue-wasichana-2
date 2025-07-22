@@ -9,9 +9,9 @@ const CharityDetails = () => {
   const dispatch = useDispatch();
   const { selectedCharity, loading, error } = useSelector((state) => state.charities);
 
-  useEffect(() => {
-    dispatch(fetchCharityById(id));
-  }, [dispatch, id]);
+  //useEffect(() => {
+    //dispatch(fetchCharityById(id));
+  //}, [dispatch, id]);
 
   if (loading) return <p>Loading charity details...</p>;
   if (error) return <p className="error">{error}</p>;

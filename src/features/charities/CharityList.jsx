@@ -7,9 +7,9 @@ const CharityList = () => {
   const dispatch = useDispatch();
   const { charities, loading, error } = useSelector((state) => state.charities);
 
-  useEffect(() => {
-    dispatch(fetchCharities());
-  }, [dispatch]);
+  //useEffect(() => {
+   // dispatch(fetchCharities());
+  //}, [dispatch]);
 
   return (
     <div className="charity-list">

@@ -7,9 +7,9 @@ const DonationHistory = () => {
   const dispatch = useDispatch();
   const { history, loading, error } = useSelector((state) => state.donations);
 
-  useEffect(() => {
-    dispatch(fetchDonationHistory());
-  }, [dispatch]);
+ // useEffect(() => {
+   // dispatch(fetchDonationHistory());
+  //}, [dispatch]);
 
   if (loading) return <p>Loading donation history...</p>;
   if (error) return <p className="error">{error}</p>;
