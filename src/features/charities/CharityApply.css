@@ -1,70 +1,50 @@
-.charity-apply-container {
-    max-width: 430px;
-    margin: 2.7rem auto;
-    padding: 2.1rem;
-    border: 1px solid #e6eaf5;
-    border-radius: 9px;
-    background: #fff;
-    box-shadow: 0 2px 16px rgba(46,108,246,0.06);
-  }
-  
-  .charity-apply-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.12rem;
-  }
-  
-  .charity-apply-field {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .charity-apply-field label {
-    color: #2e6cf6;
-    margin-bottom: 0.18rem;
-    font-size: 1rem;
-  }
-  
-  .charity-apply-field input,
-  .charity-apply-field textarea {
-    padding: 0.58rem 0.7rem;
-    border: 1px solid #c8d3e6;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-    resize: none;
-  }
-  
-  .charity-apply-field input:focus,
-  .charity-apply-field textarea:focus {
-    border-color: #2e6cf6;
-  }
-  
-  .charity-apply-btn {
-    padding: 0.66rem;
-    background: #2e6cf6;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1.07rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .charity-apply-btn:hover {
-    background: #1b4fb8;
-  }
-  
-  .charity-apply-success {
-    color: #23ba56;
-    text-align: center;
-    margin-bottom: 0.7rem;
-    font-size: 0.97rem;
-  }
-  .charity-apply-error {
-    color: #df2c2c;
-    text-align: center;
-    margin-bottom: 0.7rem;
-    font-size: 0.97rem;
-  }
+.charity-apply {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.charity-apply h2 {
+  margin-bottom: 20px;
+  color: #e75480;
+  text-align: center;
+}
+
+.charity-apply form {
+  display: flex;
+  flex-direction: column;
+}
+
+.charity-apply label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.charity-apply input,
+.charity-apply textarea {
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.charity-apply textarea {
+  min-height: 100px;
+}
+
+.charity-apply button {
+  padding: 12px;
+  background-color: #e75480;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.charity-apply button:hover {
+  background-color: #d1416d;
+}

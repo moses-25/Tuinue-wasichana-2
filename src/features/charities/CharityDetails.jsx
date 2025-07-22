@@ -1,31 +1,30 @@
-import React from "react";
-import "./CharityDetails.css";
+import React, { useEffect } from 'react';
+import './CharityDetails.css';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharityById } from '../charitiesSlice';
 
-const CharityDetails = ({ charity, onBack }) => {
-  if (!charity) return <div className="charity-details-empty">Charity not found.</div>;
+const CharityDetails = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { selectedCharity, loading, error } = useSelector((state) => state.charities);
+
+  useEffect(() => {
+    dispatch(fetchCharityById(id));
+  }, [dispatch, id]);
+
+  if (loading) return <p>Loading charity details...</p>;
+  if (error) return <p className="error">{error}</p>;
+  if (!selectedCharity) return <p>Charity not found.</p>;
 
   return (
-    <div className="charity-details-container">
-      <button className="charity-details-back" onClick={onBack}>&larr; Back</button>
-      <div className="charity-details-header">
-        <img
-          className="charity-details-logo"
-          src={charity.logo || "/assets/images/logo.png"}
-          alt={charity.name}
-        />
-        <h2>{charity.name}</h2>
-      </div>
-      <div className="charity-details-body">
-        <p>{charity.description}</p>
-        <div className="charity-details-info">
-          <div>
-            <strong>Total Donations:</strong> ${charity.totalDonated ?? 0}
-          </div>
-          <div>
-            <strong>Beneficiaries:</strong> {charity.beneficiariesCount ?? "N/A"}
-          </div>
-        </div>
-      </div>
+    <div className="charity-details">
+      <h2>{selectedCharity.name}</h2>
+      <img src={selectedCharity.image} alt={selectedCharity.name} />
+      <p><strong>Mission:</strong> {selectedCharity.mission}</p>
+      <p><strong>Location:</strong> {selectedCharity.location}</p>
+      <p><strong>Contact:</strong> {selectedCharity.email}</p>
+      <p><strong>Website:</strong> <a href={selectedCharity.website} target="_blank" rel="noopener noreferrer">{selectedCharity.website}</a></p>
     </div>
   );
 };

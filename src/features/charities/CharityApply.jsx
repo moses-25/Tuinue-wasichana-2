@@ -1,83 +1,42 @@
-import React, { useState } from "react";
-import "./CharityApply.css";
+import React, { useState } from 'react';
+import './CharityApply.css';
 
-const CharityApply = ({ onApply }) => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    description: "",
-    website: "",
+const CharityApply = ({ onSubmit }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mission: '',
+    website: '',
+    location: '',
   });
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage("");
-    setError("");
-    try {
-      await onApply(form);
-      setMessage("Application submitted! Await admin approval.");
-      setForm({ name: "", email: "", description: "", website: "" });
-    } catch (e) {
-      setError("Failed to submit. Please try again.");
-    }
+    onSubmit(formData);
   };
 
   return (
-    <div className="charity-apply-container">
-      <h2>Apply as a Charity</h2>
-      <form className="charity-apply-form" onSubmit={handleSubmit}>
-        {message && <div className="charity-apply-success">{message}</div>}
-        {error && <div className="charity-apply-error">{error}</div>}
-        <div className="charity-apply-field">
-          <label>Charity Name</label>
-          <input
-            name="name"
-            type="text"
-            placeholder="Charity Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="charity-apply-field">
-          <label>Email</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="Contact Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="charity-apply-field">
-          <label>Description</label>
-          <textarea
-            name="description"
-            placeholder="Describe your charity and its mission"
-            value={form.description}
-            onChange={handleChange}
-            rows={4}
-            required
-          />
-        </div>
-        <div className="charity-apply-field">
-          <label>Website (optional)</label>
-          <input
-            name="website"
-            type="url"
-            placeholder="https://example.org"
-            value={form.website}
-            onChange={handleChange}
-          />
-        </div>
-        <button className="charity-apply-btn" type="submit">Submit Application</button>
+    <div className="charity-apply">
+      <h2>Charity Application</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Organization Name</label>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <label>Email</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        <label>Mission Statement</label>
+        <textarea name="mission" value={formData.mission} onChange={handleChange} required />
+        <label>Website</label>
+        <input type="url" name="website" value={formData.website} onChange={handleChange} />
+        <label>Location</label>
+        <input type="text" name="location" value={formData.location} onChange={handleChange} required />
+        <button type="submit">Submit Application</button>
       </form>
     </div>
   );

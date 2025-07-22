@@ -1,86 +1,109 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  fetchCharitiesAPI,
+  fetchCharityByIdAPI,
+  applyCharityAPI
+} from './charitiesAPI';
 
-// Mock data
-const mockCharities = [
-  { id: 1, name: "Charity One", description: "Helping girls in STEM." },
-  { id: 2, name: "Charity Two", description: "Supporting education." },
-];
-
+// Async Thunks
 export const fetchCharities = createAsyncThunk(
-  "charities/fetchCharities",
-  async () => {
-    // Return mock data
-    return mockCharities;
+  'charities/fetchCharities',
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetchCharitiesAPI();
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
-export const fetchCharityDetails = createAsyncThunk(
-  "charities/fetchCharityDetails",
-  async (id) => {
-    // Return mock data
-    return mockCharities.find((charity) => charity.id === id);
+export const fetchCharityById = createAsyncThunk(
+  'charities/fetchCharityById',
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetchCharityByIdAPI(id);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
 export const applyCharity = createAsyncThunk(
-  "charities/applyCharity",
-  async (form) => {
-    // Return mock data
-    return { ...form, id: mockCharities.length + 1 };
+  'charities/applyCharity',
+  async (formData, thunkAPI) => {
+    try {
+      const res = await applyCharityAPI(formData);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
+// Initial State
+const initialState = {
+  charities: [],
+  selectedCharity: null,
+  loading: false,
+  error: null,
+  successMessage: null
+};
+
+// Slice
 const charitiesSlice = createSlice({
-  name: "charities",
-  initialState: {
-    charities: [],
-    selectedCharity: null,
-    status: "idle",
-    error: null,
-  },
+  name: 'charities',
+  initialState,
   reducers: {
-    setSelectedCharity(state, action) {
-      state.selectedCharity = action.payload;
-    },
+    clearMessages: (state) => {
+      state.error = null;
+      state.successMessage = null;
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCharities.pending, (state) => {
-        state.status = "loading";
+        state.loading = true;
+        state.error = null;
       })
       .addCase(fetchCharities.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.loading = false;
         state.charities = action.payload;
       })
       .addCase(fetchCharities.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        state.loading = false;
+        state.error = action.payload;
       })
-      .addCase(fetchCharityDetails.pending, (state) => {
-        state.status = "loading";
+      .addCase(fetchCharityById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchCharityDetails.fulfilled, (state, action) => {
-        state.status = "succeeded";
+      .addCase(fetchCharityById.fulfilled, (state, action) => {
+        state.loading = false;
         state.selectedCharity = action.payload;
       })
-      .addCase(fetchCharityDetails.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+      .addCase(fetchCharityById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
       .addCase(applyCharity.pending, (state) => {
-        state.status = "loading";
+        state.loading = true;
+        state.error = null;
+        state.successMessage = null;
       })
       .addCase(applyCharity.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.charities = [...state.charities, action.payload];
+        state.loading = false;
+        state.successMessage = 'Application submitted successfully!';
       })
       .addCase(applyCharity.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        state.loading = false;
+        state.error = action.payload;
       });
-  },
+  }
 });
 
-export const { setSelectedCharity } = charitiesSlice.actions;
+// Export
+export const { clearMessages } = charitiesSlice.actions;
 export default charitiesSlice.reducer;
 

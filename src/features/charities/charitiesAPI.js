@@ -1,25 +1,18 @@
-// Example API functions for charities
+import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const BASE_URL = 'https://your-backend-api.com/api/charities'; // Replace with your actual backend
 
-export async function fetchCharities() {
-  const res = await fetch(`${API_URL}/charities`);
-  if (!res.ok) throw new Error("Failed to fetch charities");
-  return res.json();
-}
+// Fetch all charities
+export const fetchCharitiesAPI = async () => {
+  return await axios.get(`${BASE_URL}`);
+};
 
-export async function fetchCharityDetails(id) {
-  const res = await fetch(`${API_URL}/charities/${id}`);
-  if (!res.ok) throw new Error("Failed to fetch charity details");
-  return res.json();
-}
+// Fetch single charity by ID
+export const fetchCharityByIdAPI = async (id) => {
+  return await axios.get(`${BASE_URL}/${id}`);
+};
 
-export async function applyCharity(form) {
-  const res = await fetch(`${API_URL}/charities/apply`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(form)
-  });
-  if (!res.ok) throw new Error("Charity application failed");
-  return res.json();
-}
+// Apply to be listed as a charity
+export const applyCharityAPI = async (formData) => {
+  return await axios.post(`${BASE_URL}/apply`, formData);
+};
