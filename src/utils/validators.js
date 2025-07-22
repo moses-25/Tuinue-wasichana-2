@@ -1,40 +1,21 @@
-/**
- * Validate an email address
- * @param {string} email
- * @returns {boolean}
- */
-export function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-  
-  /**
-   * Validate password (min 6 chars as example)
-   * @param {string} password
-   * @returns {boolean}
-   */
-  export function isValidPassword(password) {
-    return typeof password === "string" && password.length >= 6;
-  }
-  
-  /**
-   * Validate required field
-   * @param {string} value
-   * @returns {boolean}
-   */
-  export function isRequired(value) {
-    return value != null && value.toString().trim() !== "";
-  }
-  
-  /**
-   * Validate URL
-   * @param {string} url
-   * @returns {boolean}
-   */
-  export function isValidURL(url) {
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  }
+// Check if an email is valid
+export const isValidEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
+// Check if password is strong enough
+export const isStrongPassword = (password) => {
+  return password.length >= 6;
+};
+
+// Check if a field is empty
+export const isEmpty = (value) => {
+  return value.trim() === '';
+};
+
+// Validate phone number (basic)
+export const isValidPhone = (phone) => {
+  const regex = /^\+?\d{10,15}$/;
+  return regex.test(phone);
+};
