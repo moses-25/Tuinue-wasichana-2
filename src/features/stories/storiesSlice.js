@@ -1,61 +1,77 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchStories, fetchStoryDetails } from "./storiesAPI";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getAllStoriesAPI, getStoryByIdAPI } from './storiesAPI';
 
-const initialState = {
-  stories: [],
-  selectedStory: null,
-  status: "idle",
-  error: null,
-};
-
-export const getStories = createAsyncThunk(
-  "stories/getStories",
+// Thunk to fetch all stories
+export const fetchStories = createAsyncThunk(
+  'stories/fetchStories',
   async (_, thunkAPI) => {
-    return await fetchStories();
+    try {
+      const res = await getAllStoriesAPI();
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const getStoryDetails = createAsyncThunk(
-  "stories/getStoryDetails",
+// Thunk to fetch a single story by ID
+export const fetchStoryById = createAsyncThunk(
+  'stories/fetchStoryById',
   async (id, thunkAPI) => {
-    return await fetchStoryDetails(id);
+    try {
+      const res = await getStoryByIdAPI(id);
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
 const storiesSlice = createSlice({
-  name: "stories",
-  initialState,
+  name: 'stories',
+  initialState: {
+    stories: [],
+    selectedStory: null,
+    loading: false,
+    error: null
+  },
   reducers: {
-    setSelectedStory(state, action) {
-      state.selectedStory = action.payload;
+    clearStoryError: (state) => {
+      state.error = null;
     },
+    clearSelectedStory: (state) => {
+      state.selectedStory = null;
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getStories.pending, (state) => {
-        state.status = "loading";
+      .addCase(fetchStories.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(getStories.fulfilled, (state, action) => {
-        state.status = "succeeded";
+      .addCase(fetchStories.fulfilled, (state, action) => {
+        state.loading = false;
         state.stories = action.payload;
       })
-      .addCase(getStories.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+      .addCase(fetchStories.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
-      .addCase(getStoryDetails.pending, (state) => {
-        state.status = "loading";
+      .addCase(fetchStoryById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.selectedStory = null;
       })
-      .addCase(getStoryDetails.fulfilled, (state, action) => {
-        state.status = "succeeded";
+      .addCase(fetchStoryById.fulfilled, (state, action) => {
+        state.loading = false;
         state.selectedStory = action.payload;
       })
-      .addCase(getStoryDetails.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+      .addCase(fetchStoryById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
-  },
+  }
 });
 
-export const { setSelectedStory } = storiesSlice.actions;
+export const { clearStoryError, clearSelectedStory } = storiesSlice.actions;
 export default storiesSlice.reducer;

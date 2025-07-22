@@ -1,15 +1,13 @@
-// Example API functions for stories
+import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const BASE_URL = 'https://your-backend-api.com/api/stories'; // Replace with your actual backend route
 
-export async function fetchStories() {
-  const res = await fetch(`${API_URL}/stories`);
-  if (!res.ok) throw new Error("Failed to fetch stories");
-  return res.json();
-}
+// Fetch all stories
+export const getAllStoriesAPI = async () => {
+  return await axios.get(`${BASE_URL}`);
+};
 
-export async function fetchStoryDetails(id) {
-  const res = await fetch(`${API_URL}/stories/${id}`);
-  if (!res.ok) throw new Error("Failed to fetch story details");
-  return res.json();
-}
+// Fetch a single story by ID
+export const getStoryByIdAPI = async (id) => {
+  return await axios.get(`${BASE_URL}/${id}`);
+};

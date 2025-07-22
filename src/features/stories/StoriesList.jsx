@@ -1,37 +1,30 @@
-import React from "react";
-import "./StoriesList.css";
+import React, { useEffect } from 'react';
+import './StoriesList.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchStories } from '../storiesSlice';
+import { Link } from 'react-router-dom';
 
-const StoriesList = ({ stories = [], onSelectStory }) => {
-  if (!stories.length) {
-    return <div className="stories-list-empty">No stories available.</div>;
-  }
+const StoriesList = () => {
+  const dispatch = useDispatch();
+  const { stories, loading, error } = useSelector((state) => state.stories);
+
+  useEffect(() => {
+    dispatch(fetchStories());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading stories...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
-    <div className="stories-list-container">
-      <h2>Beneficiary Stories</h2>
-      <div className="stories-list">
-        {stories.map(story => (
-          <div
-            key={story.id}
-            className="story-card"
-            onClick={() => onSelectStory && onSelectStory(story)}
-            tabIndex={0}
-          >
-            <img
-              src={story.image || "/assets/images/story-placeholder.png"}
-              alt={story.title}
-              className="story-card-image"
-            />
-            <div className="story-card-content">
-              <h3>{story.title}</h3>
-              <p className="story-card-snippet">
-                {story.content.slice(0, 90)}...
-              </p>
-              <span className="story-card-author">
-                By {story.author || "Charity"}
-              </span>
-            </div>
-          </div>
+    <div className="stories-list">
+      <h2>Real Stories</h2>
+      <div className="story-cards">
+        {stories.map((story) => (
+          <Link to={`/stories/${story.id}`} key={story.id} className="story-card">
+            <img src={story.image} alt={story.title} />
+            <h3>{story.title}</h3>
+            <p>{story.snippet || story.content.slice(0, 80)}...</p>
+          </Link>
         ))}
       </div>
     </div>
