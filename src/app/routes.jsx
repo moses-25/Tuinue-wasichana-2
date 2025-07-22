@@ -1,174 +1,51 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
-
-// Layouts
-import MainLayout from "../layouts/MainLayout/MainLayout";
-import AuthLayout from "../layouts/AuthLayout/AuthLayout";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import routes from '../constants/routes';
+import MainLayout from '../layouts/MainLayout/MainLayout';
+import AuthLayout from '../layouts/AuthLayout/AuthLayout';
 
 // Pages
-import Home from "../pages/Home/Home";
-import About from "../pages/About/About";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import NotFound from "../pages/NotFound/NotFound";
+import Home from '../pages/Home/Home';
+import About from '../pages/About/About';
+import Programs from '../pages/Programs/Programs';
+import Stories from '../pages/Stories/Stories';
+import Charities from '../pages/Charities/Charities';
+import CharityDetails from '../pages/CharityDetails/CharityDetails';
+import Donate from '../pages/Donate/Donate';
+import FAQ from '../pages/FAQ/FAQ';
+import Contact from '../pages/Contact/Contact';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import Login from '../features/auth/Login/Login';
+import Register from '../features/auth/Register/Register';
+import NotFound from '../pages/NotFound/NotFound';
 
-// Auth
-import Login from "../features/auth/Login/Login";
-import Register from "../features/auth/Register/Register";
+const AppRoutes = () => {
+  return (
+    <Routes>
+      {/* Main layout routes */}
+      <Route element={<MainLayout />}>
+        <Route path={routes.HOME} element={<Home />} />
+        <Route path={routes.ABOUT} element={<About />} />
+        <Route path={routes.PROGRAMS} element={<Programs />} />
+        <Route path={routes.STORIES} element={<Stories />} />
+        <Route path={routes.CHARITIES} element={<Charities />} />
+        <Route path={routes.CHARITY_DETAILS} element={<CharityDetails />} />
+        <Route path={routes.DONATE} element={<Donate />} />
+        <Route path={routes.FAQ} element={<FAQ />} />
+        <Route path={routes.CONTACT} element={<Contact />} />
+        <Route path={routes.DASHBOARD} element={<Dashboard />} />
+      </Route>
 
-// Charities
-import CharityList from "../features/charities/CharityList/CharityList";
-import CharityDetails from "../features/charities/CharityDetails/CharityDetails";
-import CharityApply from "../features/charities/CharityApply/CharityApply";
+      {/* Auth layout routes */}
+      <Route element={<AuthLayout />}>
+        <Route path={routes.LOGIN} element={<Login />} />
+        <Route path={routes.REGISTER} element={<Register />} />
+      </Route>
 
-// Donations
-import DonationForm from "../features/donations/DonationForm/DonationForm";
-import DonationHistory from "../features/donations/DonationHistory/DonationHistory";
-
-// Stories
-import StoriesList from "../features/stories/StoriesList/StoriesList";
-import StoryDetails from "../features/stories/StoryDetails/StoryDetails";
-
-// Admin
-import AdminDashboard from "../features/admin/AdminDashboard/AdminDashboard";
-import CharityApproval from "../features/admin/CharityApproval/CharityApproval";
-
-const AppRoutes = () => (
-  <Routes>
-    {/* Public routes */}
-    <Route
-      path={ROUTES.HOME}
-      element={
-        <MainLayout>
-          <Home />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.ABOUT}
-      element={
-        <MainLayout>
-          <About />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.LOGIN}
-      element={
-        <AuthLayout>
-          <Login />
-        </AuthLayout>
-      }
-    />
-    <Route
-      path={ROUTES.REGISTER}
-      element={
-        <AuthLayout>
-          <Register />
-        </AuthLayout>
-      }
-    />
-
-    {/* Dashboard */}
-    <Route
-      path={ROUTES.DASHBOARD}
-      element={
-        <MainLayout>
-          <Dashboard />
-        </MainLayout>
-      }
-    />
-
-    {/* Charities */}
-    <Route
-      path={ROUTES.CHARITIES}
-      element={
-        <MainLayout>
-          <CharityList />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.CHARITY_DETAILS}
-      element={
-        <MainLayout>
-          <CharityDetails />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.CHARITY_APPLY}
-      element={
-        <MainLayout>
-          <CharityApply />
-        </MainLayout>
-      }
-    />
-
-    {/* Donations */}
-    <Route
-      path={ROUTES.DONATE}
-      element={
-        <MainLayout>
-          <DonationForm />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.DONATIONS}
-      element={
-        <MainLayout>
-          <DonationHistory />
-        </MainLayout>
-      }
-    />
-
-    {/* Stories */}
-    <Route
-      path={ROUTES.STORIES}
-      element={
-        <MainLayout>
-          <StoriesList />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.STORY_DETAILS}
-      element={
-        <MainLayout>
-          <StoryDetails />
-        </MainLayout>
-      }
-    />
-
-    {/* Admin */}
-    <Route
-      path={ROUTES.ADMIN_DASHBOARD}
-      element={
-        <MainLayout>
-          <AdminDashboard />
-        </MainLayout>
-      }
-    />
-    <Route
-      path={ROUTES.ADMIN_CHARITY_APPROVAL}
-      element={
-        <MainLayout>
-          <CharityApproval />
-        </MainLayout>
-      }
-    />
-
-    {/* 404 */}
-    <Route
-      path={ROUTES.NOT_FOUND}
-      element={
-        <MainLayout>
-          <NotFound />
-        </MainLayout>
-      }
-    />
-  </Routes>
-);
+      {/* 404 */}
+      <Route path={routes.NOT_FOUND} element={<NotFound />} />
+    </Routes>
+  );
+};
 
 export default AppRoutes;
