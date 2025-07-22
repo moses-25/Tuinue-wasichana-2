@@ -1,3 +1,27 @@
+# Tuinue Wasichana - Donation Platform
+
+A React-based platform that connects donors with local charities supporting African schoolgirls.
+
+## Features
+- Donate one-time or monthly
+- Browse verified charities
+- Track your donation history
+- View real stories and impact
+
+## Getting Started
+
+1. Clone this repo
+2. `cd frontend && npm install`
+3. `npm start`
+
+## Folder Structure
+
+See `src/` for modular feature folders, component structure, and routing setup.
+
+## License
+MIT
+
+
 tuinue-wasichana-frontend/
 │
 ├── public/
