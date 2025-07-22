@@ -1,18 +1,28 @@
-export const ROUTES = {
-    HOME: "/",
-    ABOUT: "/about",
-    LOGIN: "/login",
-    REGISTER: "/register",
-    DASHBOARD: "/dashboard",
-    CHARITIES: "/charities",
-    CHARITY_DETAILS: "/charities/:id",
-    CHARITY_APPLY: "/charities/apply",
-    DONATE: "/donate",
-    DONATIONS: "/donations",
-    STORIES: "/stories",
-    STORY_DETAILS: "/stories/:id",
-    ADMIN: "/admin",
-    ADMIN_DASHBOARD: "/admin/dashboard",
-    ADMIN_CHARITY_APPROVAL: "/admin/charity-approval",
-    NOT_FOUND: "*",
-  };
+const routes = {
+  // Public pages
+  HOME: '/',
+  ABOUT: '/about',
+  PROGRAMS: '/programs',
+  STORIES: '/stories',
+  CHARITIES: '/charities',
+  CHARITY_DETAILS: '/charities/:id',
+  DONATE: '/donate',
+  FAQ: '/faq',
+  CONTACT: '/contact',
+
+  // Auth
+  LOGIN: '/login',
+  REGISTER: '/register',
+
+  // Dashboard
+  DASHBOARD: '/dashboard',
+
+  // Admin
+  ADMIN_DASHBOARD: '/admin',
+  ADMIN_APPROVALS: '/admin/approvals',
+
+  // Not Found
+  NOT_FOUND: '*',
+};
+
+export default routes;
