@@ -1,43 +1,29 @@
-.donation-history-container {
-    max-width: 720px;
-    margin: 2.5rem auto;
-    padding: 1.5rem;
+.donation-history {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
     background: #fff;
-    border-radius: 9px;
-    border: 1px solid #e6eaf5;
-    box-shadow: 0 2px 16px rgba(46,108,246,0.06);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
   
-  .donation-history-container h2 {
+  .donation-history h2 {
+    color: #e75480;
     margin-bottom: 1rem;
-    color: #2e6cf6;
-  }
-  
-  .donation-history-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1rem;
-  }
-  
-  .donation-history-table th,
-  .donation-history-table td {
-    padding: 0.7rem 0.5rem;
-    border-bottom: 1px solid #e6eaf5;
-    text-align: left;
-  }
-  
-  .donation-history-table th {
-    background: #f5f7fa;
-    color: #2240a2;
-  }
-  
-  .donation-history-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .donation-history-empty {
-    color: #999;
     text-align: center;
-    margin-top: 2rem;
-    font-size: 1.08rem;
+  }
+  
+  .donation-history ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .donation-history li {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .donation-history hr {
+    margin-top: 0.8rem;
+    border: 0.5px solid #eee;
   }

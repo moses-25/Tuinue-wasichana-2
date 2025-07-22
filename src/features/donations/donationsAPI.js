@@ -1,19 +1,13 @@
-// Example API functions for donations
+import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const BASE_URL = 'https://your-backend-api.com/api/donations'; // Replace with your actual backend route
 
-export async function getDonations() {
-  const res = await fetch(`${API_URL}/donations`);
-  if (!res.ok) throw new Error("Failed to fetch donations");
-  return res.json();
-}
+// Submit a new donation
+export const submitDonationAPI = async (data) => {
+  return await axios.post(`${BASE_URL}`, data);
+};
 
-export async function makeDonation(form) {
-  const res = await fetch(`${API_URL}/donations`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(form)
-  });
-  if (!res.ok) throw new Error("Failed to make donation");
-  return res.json();
-}
+// Get user's donation history
+export const fetchDonationHistoryAPI = async () => {
+  return await axios.get(`${BASE_URL}/history`);
+};

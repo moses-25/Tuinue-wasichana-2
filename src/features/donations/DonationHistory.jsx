@@ -1,36 +1,34 @@
-import React from "react";
-import "./DonationHistory.css";
+import React, { useEffect } from 'react';
+import './DonationHistory.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDonationHistory } from '../donationsSlice';
 
-const DonationHistory = ({ donations = [] }) => {
-  if (!donations.length) {
-    return <div className="donation-history-empty">No donations yet.</div>;
-  }
+const DonationHistory = () => {
+  const dispatch = useDispatch();
+  const { history, loading, error } = useSelector((state) => state.donations);
+
+  useEffect(() => {
+    dispatch(fetchDonationHistory());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading donation history...</p>;
+  if (error) return <p className="error">{error}</p>;
+  if (!history.length) return <p>You haven't made any donations yet.</p>;
 
   return (
-    <div className="donation-history-container">
-      <h2>Donation History</h2>
-      <table className="donation-history-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Charity</th>
-            <th>Amount ($)</th>
-            <th>Status</th>
-            <th>Repeat</th>
-          </tr>
-        </thead>
-        <tbody>
-          {donations.map((d, idx) => (
-            <tr key={d.id || idx}>
-              <td>{new Date(d.date).toLocaleDateString()}</td>
-              <td>{d.charityName}</td>
-              <td>{d.amount}</td>
-              <td>{d.status || "Success"}</td>
-              <td>{d.repeat ? "Yes" : "No"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="donation-history">
+      <h2>Your Donation History</h2>
+      <ul>
+        {history.map((donation) => (
+          <li key={donation.id}>
+            <p><strong>Charity:</strong> {donation.charityName}</p>
+            <p><strong>Amount:</strong> ${donation.amount}</p>
+            <p><strong>Frequency:</strong> {donation.frequency}</p>
+            <p><strong>Date:</strong> {new Date(donation.date).toLocaleDateString()}</p>
+            <hr />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

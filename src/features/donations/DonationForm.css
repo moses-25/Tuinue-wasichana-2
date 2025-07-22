@@ -1,90 +1,47 @@
-.donation-form-container {
-    max-width: 420px;
-    margin: 2.5rem auto;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #e6eaf5;
-    box-shadow: 0 2px 16px rgba(46,108,246,0.08);
-  }
-  
-  .donation-form h2 {
-    margin-bottom: 1.2rem;
-    color: #2e6cf6;
-    text-align: center;
-  }
-  
-  .donation-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-  }
-  
-  .donation-form-field {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .donation-form-field label {
-    color: #2e6cf6;
-    margin-bottom: 0.18rem;
-    font-size: 1rem;
-  }
-  
-  .donation-form-field input,
-  .donation-form-field select,
-  .donation-form-field textarea {
-    padding: 0.58rem 0.7rem;
-    border: 1px solid #c8d3e6;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-    resize: none;
-  }
-  
-  .donation-form-field input:focus,
-  .donation-form-field select:focus,
-  .donation-form-field textarea:focus {
-    border-color: #2e6cf6;
-  }
-  
-  .donation-form-checkboxes {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-  }
-  
-  .donation-form-checkboxes label {
-    font-size: 0.98rem;
-    color: #2240a2;
-    cursor: pointer;
-  }
-  
-  .donation-form-btn {
-    padding: 0.66rem;
-    background: #2e6cf6;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1.07rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .donation-form-btn:hover {
-    background: #1b4fb8;
-  }
-  
-  .donation-form-success {
-    color: #23ba56;
-    text-align: center;
-    margin-bottom: 0.7rem;
-    font-size: 0.97rem;
-  }
-  .donation-form-error {
-    color: #df2c2c;
-    text-align: center;
-    margin-bottom: 0.7rem;
-    font-size: 0.97rem;
-  }
+.donation-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.donation-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #e75480;
+}
+
+.donation-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.donation-form label {
+  margin: 12px 0 6px;
+  font-weight: bold;
+}
+
+.donation-form input,
+.donation-form select,
+.donation-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.donation-form textarea {
+  min-height: 80px;
+}
+
+.donation-form button {
+  margin-top: 20px;
+  background: #e75480;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -1,55 +1,77 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { makeDonation, getDonations } from "./donationsAPI";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { submitDonationAPI, fetchDonationHistoryAPI } from './donationsAPI';
 
-const initialState = {
-  donations: [],
-  status: "idle",
-  error: null,
-};
-
-export const fetchDonations = createAsyncThunk(
-  "donations/fetchDonations",
-  async (_, thunkAPI) => {
-    return await getDonations();
+// Thunk: Make a donation
+export const makeDonation = createAsyncThunk(
+  'donations/makeDonation',
+  async (data, thunkAPI) => {
+    try {
+      const res = await submitDonationAPI(data);
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
-export const submitDonation = createAsyncThunk(
-  "donations/submitDonation",
-  async (form, thunkAPI) => {
-    return await makeDonation(form);
+// Thunk: Fetch donation history
+export const fetchDonationHistory = createAsyncThunk(
+  'donations/fetchDonationHistory',
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetchDonationHistoryAPI();
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+    }
   }
 );
 
 const donationsSlice = createSlice({
-  name: "donations",
-  initialState,
-  reducers: {},
+  name: 'donations',
+  initialState: {
+    history: [],
+    loading: false,
+    error: null,
+    successMessage: null,
+  },
+  reducers: {
+    clearDonationMessages: (state) => {
+      state.successMessage = null;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDonations.pending, (state) => {
-        state.status = "loading";
+      // Make donation
+      .addCase(makeDonation.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.successMessage = null;
       })
-      .addCase(fetchDonations.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.donations = action.payload;
+      .addCase(makeDonation.fulfilled, (state, action) => {
+        state.loading = false;
+        state.successMessage = 'Donation successful!';
       })
-      .addCase(fetchDonations.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+      .addCase(makeDonation.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
-      .addCase(submitDonation.pending, (state) => {
-        state.status = "loading";
+      // Fetch history
+      .addCase(fetchDonationHistory.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(submitDonation.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.donations.unshift(action.payload);
+      .addCase(fetchDonationHistory.fulfilled, (state, action) => {
+        state.loading = false;
+        state.history = action.payload;
       })
-      .addCase(submitDonation.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+      .addCase(fetchDonationHistory.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
+export const { clearDonationMessages } = donationsSlice.actions;
 export default donationsSlice.reducer;
