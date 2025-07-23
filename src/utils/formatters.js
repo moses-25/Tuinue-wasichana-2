@@ -1,4 +1,4 @@
-// Format date to readable string
+// Format date to a readable format
 export const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString(undefined, {
@@ -8,7 +8,7 @@ export const formatDate = (dateString) => {
   });
 };
 
-// Format number as currency (e.g. KES 1,000.00)
+// Format number to currency (e.g., KES 1,000.00)
 export const formatCurrency = (amount, currency = 'KES') => {
   return new Intl.NumberFormat('en-KE', {
     style: 'currency',

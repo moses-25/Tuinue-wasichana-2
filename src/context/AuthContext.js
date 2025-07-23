@@ -1,48 +1,42 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// 1. Create the context
+// 1. Create context
 const AuthContext = createContext();
 
-// 2. Provider component
+// 2. AuthProvider component
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);     // Holds the logged-in user
-  const [token, setToken] = useState(null);   // Holds the JWT token
-
-  // Optional: Load from localStorage on mount
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    const storedToken = localStorage.getItem('token');
-
-    if (storedUser && storedToken) {
-      setUser(storedUser);
-      setToken(storedToken);
-    }
-  }, []);
-
-  // Save to localStorage when auth state changes
-  useEffect(() => {
-    if (user && token) {
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', token);
-    } else {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-    }
-  }, [user, token]);
-
-  // Logout function
+  const [user, setUser] = useState(() => {
+    // Try to load user from localStorage
+    const storedUser = localStorage.getItem('tuinueUser');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  const [token, setToken] = useState(() => localStorage.getItem('tuinueToken') || null);
+  const login = (userData, tokenData) => {
+    setUser(userData);
+    setToken(tokenData);
+    localStorage.setItem('tuinueUser', JSON.stringify(userData));
+    localStorage.setItem('tuinueToken', tokenData);
+  };
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.clear();
+    localStorage.removeItem('tuinueUser');
+    localStorage.removeItem('tuinueToken');
   };
+  const isAuthenticated = !!token;
+  useEffect(() => {
+    // Optional: check auth status on mount or refresh
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, token, setUser, setToken, logout }}>
+    <AuthContext.Provider value={{ user, token, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// 3. Custom hook for easier access
-export const useAuthContext = () => useContext(AuthContext);
+// 3. Custom hook to use auth context
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+};
+
