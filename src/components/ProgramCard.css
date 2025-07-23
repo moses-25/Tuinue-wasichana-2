@@ -1,38 +1,31 @@
-.tw-program-card {
-    background: #ffffff;
-    border: 1px solid #eee;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    text-align: center;
-    transition: all 0.3s ease;
-    flex: 1;
-    min-width: 240px;
-  }
+.program-card {
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
 
-  .tw-program-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
+.program-card:hover {
+  transform: translateY(-5px);
+}
 
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 15px;
-  }
+.icon-wrapper img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
 
-  .icon-wrapper img {
-    width: 100%;
-    height: auto;
-  }
+.program-card h3 {
+  color: #e91e63;
+  margin-bottom: 0.5rem;
+}
 
-  .tw-program-card h3 {
-    font-size: 18px;
-    color: #e75480;
-    margin-bottom: 10px;
-  }
+.program-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 
-  .tw-program-card p {
-    font-size: 14px;
-    color: #555;
-  }

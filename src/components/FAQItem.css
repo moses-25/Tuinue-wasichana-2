@@ -1,34 +1,22 @@
 .tw-faq-item {
-  border-bottom: 1px solid #eee;
-  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  cursor: pointer;
 }
 
 .faq-question {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-}
-
-.faq-question h4 {
-  font-size: 16px;
-  margin: 0;
   color: #333;
 }
 
-.faq-question span {
-  font-size: 20px;
-  color: #e75480;
-  font-weight: bold;
+.faq-question h4 {
+  margin: 0;
 }
 
 .faq-answer {
-  margin-top: 10px;
+  margin-top: 0.5rem;
   color: #555;
-  font-size: 14px;
-  line-height: 1.6;
 }
 
-.open .faq-question h4 {
-  color: #e75480;
-}

@@ -1,9 +1,9 @@
 import React from 'react';
 import './ProgramCard.css';
 
-const ProgramCard = ({ icon, title, description }) => {
+const ProgramCard = ({ title, description, icon }) => {
   return (
-    <div className="tw-program-card">
+    <div className="program-card">
       <div className="icon-wrapper">
         <img src={icon} alt={`${title} icon`} />
       </div>

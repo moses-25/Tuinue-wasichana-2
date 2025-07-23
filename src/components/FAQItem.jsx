@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './FAQItem.css';
 
 const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className={`tw-faq-item ${isOpen ? 'open' : ''}`}>
-      <div className="faq-question" onClick={() => setIsOpen(!isOpen)}>
+    <div className={`faq-item ${open ? 'open' : ''}`}>
+      <div className="faq-question" onClick={() => setOpen(!open)}>
         <h4>{question}</h4>
-        <span>{isOpen ? '-' : '+'}</span>
+        <span>{open ? '-' : '+'}</span>
       </div>
-       {isOpen && <div className="faq-answer"><p>{answer}</p></div>}
+      {open && <div className="faq-answer"><p>{answer}</p></div>}
     </div>
   );
 };

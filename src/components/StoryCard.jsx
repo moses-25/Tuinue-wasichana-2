@@ -1,16 +1,19 @@
 import React from 'react';
 import './StoryCard.css';
+import { Link } from 'react-router-dom';
 
-const StoryCard = ({ image, name, age, story }) => {
+const StoryCard = ({ id, image, title, snippet }) => {
   return (
     <div className="story-card">
-      <img src={image} alt={name} className="story-image" />
+      <img src={image} alt={title} />
       <div className="story-content">
-        <h4>{name}, {age}</h4>
-        <p>{story}</p>
+        <h3>{title}</h3>
+        <p>{snippet}</p>
+        <Link to={`/stories/${id}`} className="read-more">Read More</Link>
       </div>
     </div>
   );
 };
 
 export default StoryCard;
+

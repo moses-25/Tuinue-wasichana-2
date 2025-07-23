@@ -1,29 +1,22 @@
 import React from 'react';
 import './HeroSection.css';
-import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
-    <section className="tw-hero">
+    <section className="hero-section">
       <div className="hero-content">
-        <h1>Support Her Dreams, Change Her Future</h1>
+        <h1>Empower Her Future</h1>
         <p>
-          Join us in empowering African schoolgirls through education, hygiene, and mentorship.
-          Every donation helps a girl stay in school with dignity.
+          Join us in supporting schoolgirls across Africa with access to education,
+          mentorship, and resources they need to thrive.
         </p>
-        <div className="hero-buttons">
-          <Link to="/donate">
-            <Button text="Donate Now" />
-          </Link>
-          <Link to="/programs">
-            <Button text="Our Programs" variant="secondary" />
-          </Link>
-        </div>
+        <Link to="/donate" className="hero-btn">
+          Donate Now
+        </Link>
       </div>
-
       <div className="hero-image">
-        <img src="/assets/images/hero-girl.png" alt="Smiling African schoolgirl" />
+        <img src="/assets/images/hero-girl.jpg" alt="Empowered African schoolgirl" />
       </div>
     </section>
   );

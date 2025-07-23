@@ -1,36 +1,39 @@
 .story-card {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 300px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-  }
-  
-  .story-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .story-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-  
-  .story-content {
-    padding: 16px;
-  }
-  
-  .story-content h4 {
-    font-size: 16px;
-    color: #e75480;
-    margin-bottom: 8px;
-  }
-  
-  .story-content p {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.4;
-  }
-  
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+}
+
+.story-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.story-content {
+  padding: 1rem;
+}
+
+.story-content h3 {
+  margin: 0;
+  color: #e91e63;
+}
+
+.story-content p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.read-more {
+  text-decoration: none;
+  color: #e91e63;
+  font-weight: bold;
+  font-size: 0.9rem;
+}

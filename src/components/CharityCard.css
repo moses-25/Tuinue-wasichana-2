@@ -1,18 +1,15 @@
-.tw-charity-card {
-  border: 1px solid #eee;
+.charity-card {
+  background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 320px;
+  transition: transform 0.3s ease;
 }
 
-.tw-charity-card:hover {
-  transform: translateY(-5px);
+.charity-card:hover {
+  transform: scale(1.02);
 }
 
 .charity-img {
@@ -21,28 +18,40 @@
   object-fit: cover;
 }
 
-.charity-content {
-  padding: 16px;
+.charity-info {
+  padding: 1rem;
 }
 
-.charity-content h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #e75480;
+.charity-info h3 {
+  margin: 0;
+  color: #e91e63;
+  font-size: 1.2rem;
 }
 
-.charity-content p {
-  font-size: 14px;
+.mission {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
   color: #555;
-  margin-bottom: 12px;
 }
 
-.view-more {
-  color: #0077cc;
-  font-size: 14px;
+.location {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: #e91e63;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
   text-decoration: none;
+  transition: background 0.3s ease;
 }
 
-.view-more:hover {
-  text-decoration: underline;
+.view-btn:hover {
+  background-color: #d81b60;
 }
+

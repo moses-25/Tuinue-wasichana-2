@@ -1,12 +1,13 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ text, onClick, type = 'button', className = '' }) => {
+const Button = ({ label, onClick, type = 'button', variant = 'primary' }) => {
   return (
-    <button className={`tw-button ${className}`} onClick={onClick} type={type}>
-      {text}
+    <button className={`btn ${variant}`} onClick={onClick} type={type}>
+      {label}
     </button>
   );
 };
 
 export default Button;
+
