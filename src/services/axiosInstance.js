@@ -1,23 +1,16 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const axiosInstance = axios.create({
-//   baseURL: 'https://your-backend-api.com/api', // ✅ Replace with your backend URL
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// });
+const axiosInstance = axios.create({
+  baseURL: '/', // Base path — leave as root if using local mock data or Vite proxy
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-// OPTIONAL: Attach token automatically if stored in localStorage or Redux
-// axiosInstance.interceptors.request.use(
-//   (config) => {
-//     const token = localStorage.getItem('token'); // Or get it from Redux store
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => Promise.reject(error)
-// );
+// You can add interceptors here if needed
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject(error)
+);
 
-// export default axiosInstance;
-
+export default axiosInstance;
