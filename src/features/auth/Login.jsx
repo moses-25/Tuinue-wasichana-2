@@ -1,42 +1,59 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin(form); // will be handled in container/page
+
+    if (!form.email || !form.password) {
+      setError('Please fill in all fields.');
+      return;
+    }
+
+    // Simulate login success
+    alert('Logged in successfully!');
+    navigate('/dashboard');
   };
 
   return (
-    <div className="auth-form">
-      <h2>Login</h2>
+    <div className="login-container">
+      <h2>Login to Tuinue Wasichana</h2>
       <form onSubmit={handleSubmit}>
-        <label>Email</label>
+        {error && <p className="error">{error}</p>}
+
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
+          placeholder="Enter your email"
           value={form.email}
           onChange={handleChange}
-          required
         />
-        <label>Password</label>
+
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"
+          placeholder="Enter your password"
           value={form.password}
           onChange={handleChange}
-          required
         />
-        <button type="submit">Log In</button>
+
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
 export default Login;
+
