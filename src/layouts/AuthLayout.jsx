@@ -1,15 +1,12 @@
 import React from 'react';
-import './AuthLayout.css';
+import { Outlet, Navigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
-const AuthLayout = ({ children }) => {
-  return (
-    <div className="tw-auth-layout">
-      <div className="auth-box">
-        <h1 className="auth-title">Welcome to Tuinue Wasichana</h1>
-        {children}
-      </div>
-    </div>
-  );
+const AuthLayout = () => {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default AuthLayout;
+

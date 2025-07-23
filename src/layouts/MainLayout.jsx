@@ -1,16 +1,18 @@
-import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import './MainLayout.css';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
-    <div className="tw-main-layout">
+    <div className="main-layout">
       <Navbar />
-      <main>{children}</main>
+      <main style={{ minHeight: '80vh', paddingTop: '60px' }}>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
 };
 
 export default MainLayout;
+
