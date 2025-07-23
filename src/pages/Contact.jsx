@@ -3,50 +3,62 @@ import './Contact.css';
 import Button from '../../components/Button/Button';
 
 const Contact = () => {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You’ll later connect this to backend (e.g. sending emails or saving to DB)
-    alert("Message sent successfully!");
-    setForm({ name: '', email: '', message: '' });
+    alert('Thank you for reaching out. We’ll get back to you soon!');
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
     <div className="tw-contact">
       <h1>Contact Us</h1>
-      <p>We'd love to hear from you — whether it's feedback, questions, or partnership ideas.</p>
-
+      <p className="contact-intro">Have a question, feedback, or want to get involved? We'd love to hear from you.</p>
       <form onSubmit={handleSubmit} className="contact-form">
         <label>
-          Name
+          Full Name
           <input
             type="text"
             name="name"
-            value={form.name}
+            placeholder="Your name"
+            value={formData.name}
             onChange={handleChange}
             required
-            placeholder="Your name"
           />
         </label>
 
         <label>
-          Email
+          Email Address
           <input
             type="email"
             name="email"
-            value={form.email}
+            placeholder="you@example.com"
+            value={formData.email}
             onChange={handleChange}
             required
-            placeholder="your@email.com"
+          />
+        </label>
+
+        <label>
+          Subject
+          <input
+            type="text"
+            name="subject"
+            placeholder="What's this about?"
+            value={formData.subject}
+            onChange={handleChange}
+            required
           />
         </label>
 
@@ -54,18 +66,19 @@ const Contact = () => {
           Message
           <textarea
             name="message"
-            value={form.message}
-            onChange={handleChange}
             rows="5"
-            placeholder="Write your message here..."
+            placeholder="Type your message..."
+            value={formData.message}
+            onChange={handleChange}
             required
           />
         </label>
 
-        <Button type="submit" text="Send Message" />
+        <Button text="Send Message" type="submit" />
       </form>
     </div>
   );
 };
 
 export default Contact;
+

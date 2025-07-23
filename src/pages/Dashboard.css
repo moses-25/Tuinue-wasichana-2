@@ -1,48 +1,51 @@
 .tw-dashboard {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 0 20px;
+  padding: 2rem 1.5rem;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
 }
 
 .tw-dashboard h1 {
-  font-size: 32px;
-  color: #e75480;
-  margin-bottom: 8px;
+  font-size: 2.2rem;
+  color: #db2675;
+  margin-bottom: 0.5rem;
 }
 
-.tw-dashboard p {
-  font-size: 16px;
+.tw-dashboard .subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
   color: #555;
-  margin-bottom: 30px;
 }
 
-.dashboard-section {
-  margin-bottom: 40px;
+.dashboard-cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+
+.dash-card {
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  transition: transform 0.2s ease;
   text-align: left;
-}
-
-.dashboard-section h2 {
-  font-size: 20px;
+  text-decoration: none;
   color: #333;
-  margin-bottom: 12px;
 }
 
-.donation-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
+.dash-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
-.donation-table th,
-.donation-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+.dash-card h3 {
+  margin-bottom: 0.5rem;
+  color: #db2675;
 }
 
-.donation-table th {
-  background-color: #f4f4f4;
-  color: #444;
+.dash-card.admin-card {
+  background: #ffeef2;
+  border-left: 4px solid #db2675;
 }
 

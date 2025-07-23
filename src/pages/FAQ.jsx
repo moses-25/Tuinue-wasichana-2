@@ -1,54 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FAQ.css';
 import FAQItem from '../../components/FAQItem/FAQItem';
 
-const faqs = [
+const faqData = [
   {
-    question: "What does it mean to sponsor a child?",
-    answer: "It means providing financial support to help a girl access school fees, meals, and essentials — while staying in touch with her journey."
+    question: 'What is Tuinue Wasichana?',
+    answer: 'Tuinue Wasichana is a platform dedicated to supporting African schoolgirls by connecting donors to charities that focus on education, hygiene, and empowerment.'
   },
   {
-    question: "How much does it cost to sponsor a child?",
-    answer: "Sponsorship starts at just KES 2,000/month — enough to cover school essentials like tuition, meals, and hygiene kits."
+    question: 'How can I make a donation?',
+    answer: 'You can donate directly via our Donate page using PayPal, M-Pesa, or your card. You may also choose one-time or recurring support.'
   },
   {
-    question: "Where can I sponsor a child?",
-    answer: "You can sponsor a child by selecting a registered charity and choosing the 'Donate Monthly' option on their page."
+    question: 'Is my donation secure?',
+    answer: 'Absolutely. All transactions are encrypted and processed through trusted gateways.'
   },
   {
-    question: "Can I write to my sponsored child?",
-    answer: "Yes! Many charities allow donors to send letters, messages, or receive story updates from their sponsored girl."
+    question: 'Can I choose which charity to support?',
+    answer: 'Yes. You can browse available charities and choose to support the one that aligns with your values.'
   },
   {
-    question: "Can I donate instead of sponsoring a child?",
-    answer: "Absolutely. One-time donations are just as impactful — you can contribute to programs like school meals or transport."
-  },
-  {
-    question: "Is Tuinue Wasichana trustworthy?",
-    answer: "Yes. All charities are vetted before being approved, and you can track the stories and donations directly from your dashboard."
+    question: 'How can I share a success story?',
+    answer: 'You can share a story via the Contact page, and we’ll review it for publishing in our Stories section.'
   }
 ];
 
 const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
-
   return (
     <div className="tw-faq">
       <h1>Frequently Asked Questions</h1>
-      <p>Have a question? We've got answers.</p>
+      <p className="faq-intro">Got questions? We've got answers. Here are some of the most common inquiries.</p>
       <div className="faq-list">
-        {faqs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            isActive={index === activeIndex}
-            onToggle={() => toggleFAQ(index)}
-          />
+        {faqData.map((item, index) => (
+          <FAQItem key={index} question={item.question} answer={item.answer} />
         ))}
       </div>
     </div>
@@ -56,3 +40,4 @@ const FAQ = () => {
 };
 
 export default FAQ;
+

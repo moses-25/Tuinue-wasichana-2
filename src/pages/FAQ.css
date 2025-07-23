@@ -1,25 +1,26 @@
 .tw-faq {
     max-width: 800px;
-    margin: 60px auto;
-    padding: 0 20px;
-    text-align: center;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    font-family: 'Segoe UI', sans-serif;
   }
   
   .tw-faq h1 {
-    font-size: 32px;
-    color: #e75480;
-    margin-bottom: 12px;
+    text-align: center;
+    color: #db2675;
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
   
-  .tw-faq p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 30px;
+  .faq-intro {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
   }
   
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.2rem;
   }
-  

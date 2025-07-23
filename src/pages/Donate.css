@@ -1,47 +1,116 @@
 .tw-donate {
   max-width: 600px;
-  margin: 60px auto;
-  padding: 0 20px;
-  text-align: center;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .tw-donate h1 {
-  font-size: 32px;
-  color: #e75480;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #db2675;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .tw-donate p {
-  font-size: 16px;
+  text-align: center;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
 .donation-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  text-align: left;
+  gap: 1.2rem;
 }
 
-.donation-form label {
-  font-size: 15px;
-  color: #333;
+.form-group {
   display: flex;
   flex-direction: column;
 }
 
-.donation-form input,
-.donation-form select {
-  padding: 10px;
-  font-size: 15px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+input[type='number'],
+select {
+  padding: 0.7rem 1rem;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input[type='number']:focus,
+select:focus {
+  border-color: #db2675;
+  outline: none;
 }
 
 .checkbox {
-  flex-direction: row;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
 }
+
+.checkbox input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.checkbox label {
+  margin: 0;
+  font-weight: normal;
+  color: #444;
+}
+
+button,
+.donation-form button {
+  background-color: #db2675;
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+button:hover,
+.donation-form button:hover {
+  background-color: #b71c5a;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .tw-donate {
+    padding: 1.2rem;
+  }
+
+  .tw-donate h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  input,
+  select {
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
+}
+

@@ -1,63 +1,50 @@
 import React from 'react';
 import './Dashboard.css';
-import Button from '../../components/Button/Button';
+import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-  const donations = [
-    {
-      id: 1,
-      charity: 'GirlPower Foundation',
-      amount: 1000,
-      date: '2025-07-01',
-      recurring: true
-    },
-    {
-      id: 2,
-      charity: 'Books4Girls',
-      amount: 500,
-      date: '2025-06-10',
-      recurring: false
-    }
-  ];
+  const { user, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return (
+      <div className="tw-dashboard">
+        <h2>You are not logged in</h2>
+        <p>Please log in to view your dashboard.</p>
+        <Link to="/login" className="btn">
+          Go to Login
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="tw-dashboard">
-      <h1>Your Dashboard</h1>
-      <p>Track your impact, donations, and profile settings here.</p>
+      <h1>Welcome, {user?.name || 'User'} </h1>
+      <p className="subtitle">Here s a quick overview of your account and activity.</p>
 
-      <div className="dashboard-section">
-        <h2>Donation History</h2>
-        <table className="donation-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Charity</th>
-              <th>Amount (KES)</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations.map((donation) => (
-              <tr key={donation.id}>
-                <td>{donation.date}</td>
-                <td>{donation.charity}</td>
-                <td>{donation.amount}</td>
-                <td>{donation.recurring ? 'Monthly' : 'One-Time'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <div className="dashboard-cards">
+        <Link to="/donate" className="dash-card">
+          <h3>Donate</h3>
+          <p>Make a one-time or recurring donation</p>
+        </Link>
 
-      <div className="dashboard-section">
-        <h2>Manage Your Donations</h2>
-        <Button text="Edit Payment Info" />
-        <Button text="Cancel Recurring Donation" />
-      </div>
+        <Link to="/charities" className="dash-card">
+          <h3>Browse Charities</h3>
+          <p>See all verified organizations</p>
+        </Link>
 
-      <div className="dashboard-section">
-        <h2>Saved Charities</h2>
-        <p>(Coming Soon)</p>
+        <Link to="/stories" className="dash-card">
+          <h3>Impact Stories</h3>
+          <p>Read how your support changes lives</p>
+        </Link>
+
+        {user?.role === 'admin' && (
+          <Link to="/admin" className="dash-card admin-card">
+            <h3>Admin Panel</h3>
+            <p>Manage charities, donations & users</p>
+          </Link>
+        )}
       </div>
     </div>
   );

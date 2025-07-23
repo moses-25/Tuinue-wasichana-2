@@ -1,75 +1,50 @@
-.tw-charity-details {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
+.charity-details {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.charity-header {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 30px;
+.charity-details h2 {
+  color: #e91e63;
+  margin-bottom: 1rem;
 }
 
-.charity-header img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 10px;
-  background-color: #f4f4f4;
-}
-
-.charity-header h1 {
-  margin: 0;
-  color: #e75480;
-  font-size: 28px;
-}
-
-.charity-header .location {
-  font-size: 14px;
-  color: #777;
-  margin-top: 4px;
-}
-
-.charity-header .mission {
-  font-size: 16px;
+.charity-details .mission {
+  font-size: 1.1rem;
   color: #444;
-  margin-top: 8px;
+  margin-bottom: 1.5rem;
 }
 
-.donation-progress {
-  margin: 20px 0;
+.charity-meta p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
 }
 
-.progress-bar {
-  height: 12px;
-  background-color: #eee;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-top: 6px;
+.charity-meta a {
+  color: #0077cc;
+  text-decoration: underline;
 }
 
-.progress-bar .filled {
-  height: 100%;
-  background-color: #70c6be;
-  width: 0%;
-  transition: width 0.5s ease;
+.charity-actions {
+  margin-top: 2rem;
 }
 
-.impact-stories {
-  margin-top: 50px;
-  text-align: center;
+.donate-btn, .share-btn {
+  padding: 0.6rem 1.2rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.impact-stories h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #222;
+.donate-btn {
+  background: #e91e63;
+  color: white;
 }
 
-.stories-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.share-btn {
+  background: #f0f0f0;
+  color: #333;
 }
+

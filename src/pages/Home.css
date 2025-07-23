@@ -1,24 +1,27 @@
 .tw-home {
-  padding-top: 0;
+  padding: 1rem;
 }
 
-.programs-section,
-.stories-section {
-  padding: 60px 24px;
+.tw-intro,
+.tw-featured-programs,
+.tw-stories-preview {
+  margin: 3rem 0;
   text-align: center;
 }
 
-.programs-section h2,
-.stories-section h2 {
-  font-size: 24px;
-  color: #e75480;
-  margin-bottom: 24px;
+.tw-cta-button {
+  background-color: #e91e63;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.programs-grid,
-.stories-grid {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  justify-content: center;
+.tw-cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #e91e63;
+  font-weight: 500;
 }
+

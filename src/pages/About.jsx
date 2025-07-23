@@ -3,36 +3,38 @@ import './About.css';
 
 const About = () => {
   return (
-    <div className="tw-about">
-      <section className="about-intro">
+    <div className="tw-about-page">
+      <section className="about-hero">
         <h1>About Tuinue Wasichana</h1>
-        <p>
-          Tuinue Wasichana is a digital platform dedicated to transforming the lives of African schoolgirls through education and empowerment.
-        </p>
+        <p>Empowering African schoolgirls through access to education, resources, and hope for a brighter future.</p>
       </section>
 
       <section className="about-mission">
         <h2>Our Mission</h2>
         <p>
-          We connect generous donors with trusted local charities working hard to keep girls in school, safe, and hopeful. 
-          From covering tuition to providing meals and hygiene kits, every donation goes directly toward building a brighter future.
+          Tuinue Wasichana exists to uplift girls from underserved communities across Africa by tackling barriers to education
+          such as poverty, menstrual health, and social stigma.
         </p>
       </section>
 
-      <section className="about-belief">
-        <h2>Why Girls?</h2>
+      <section className="about-values">
+        <h2>What We Stand For</h2>
+        <ul>
+          <li><strong>Access:</strong> Every girl deserves the right to learn and grow.</li>
+          <li><strong>Dignity:</strong> We provide hygiene kits and resources for confident, healthy learning.</li>
+          <li><strong>Empowerment:</strong> Our programs foster leadership, self-worth, and independence.</li>
+        </ul>
+      </section>
+
+      <section className="about-impact">
+        <h2>Our Impact</h2>
         <p>
-          We believe that when you educate a girl, you uplift a generation. That’s why our mission goes beyond giving —
-          we share real stories, track real impact, and create emotional connections between donors and girls.
+          Since our inception, we’ve helped over <strong>10,000 girls</strong> stay in school through scholarships, mentorship, and dignity kits.
         </p>
-      </section>
-
-      <section className="about-cta">
-        <h3>Ready to Make an Impact?</h3>
-        <a className="about-btn" href="/donate">Start Donating</a>
       </section>
     </div>
   );
 };
 
 export default About;
+

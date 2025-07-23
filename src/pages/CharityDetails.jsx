@@ -1,61 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './CharityDetails.css';
-import Button from '../../components/Button/Button';
-import StoryCard from '../../components/StoryCard/StoryCard';
-
-const charity = {
-  name: 'GirlPower Foundation',
-  logo: '/assets/images/girlpower-logo.png',
-  mission: 'Empowering young girls through education and life skills training.',
-  raised: 84200,
-  target: 100000,
-  location: 'Kibera, Nairobi',
-  impactStories: [
-    {
-      image: '/assets/images/grace.jpg',
-      name: 'Grace',
-      age: '13',
-      story: 'With GirlPower’s help, Grace received school meals and confidence mentorship sessions.'
-    },
-    {
-      image: '/assets/images/nyambura.jpg',
-      name: 'Nyambura',
-      age: '11',
-      story: 'She no longer misses school during her period thanks to hygiene support.'
-    }
-  ]
-};
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharityById } from '../../features/charities/charitiesSlice';
 
 const CharityDetails = () => {
-  const progress = Math.floor((charity.raised / charity.target) * 100);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { selectedCharity, loading, error } = useSelector((state) => state.charities);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchCharityById(id));
+    }
+  }, [dispatch, id]);
+
+  if (loading) return <p>Loading charity details...</p>;
+  if (error) return <p className="error">{error}</p>;
+  if (!selectedCharity) return <p>No charity found.</p>;
 
   return (
-    <div className="tw-charity-details">
-      <div className="charity-header">
-        <img src={charity.logo} alt="Charity Logo" />
-        <div>
-          <h1>{charity.name}</h1>
-          <p className="location">{charity.location}</p>
-          <p className="mission">{charity.mission}</p>
-        </div>
+    <div className="charity-details">
+      <h2>{selectedCharity.name}</h2>
+      <p className="mission">{selectedCharity.mission}</p>
+
+      <div className="charity-meta">
+        <p><strong>Email:</strong> {selectedCharity.email}</p>
+        <p><strong>Website:</strong> <a href={selectedCharity.website} target="_blank" rel="noreferrer">{selectedCharity.website}</a></p>
+        <p><strong>Location:</strong> {selectedCharity.location}</p>
       </div>
 
-      <div className="donation-progress">
-        <p>Raised KES {charity.raised.toLocaleString()} of KES {charity.target.toLocaleString()}</p>
-        <div className="progress-bar">
-          <div className="filled" style={{ width: `${progress}%` }}></div>
-        </div>
-      </div>
-
-      <Button text="Donate Now" />
-
-      <div className="impact-stories">
-        <h2>Impact Stories</h2>
-        <div className="stories-list">
-          {charity.impactStories.map((story, idx) => (
-            <StoryCard key={idx} {...story} />
-          ))}
-        </div>
+      <div className="charity-actions">
+        <button className="donate-btn">Donate</button>
+        <button className="share-btn">Share</button>
       </div>
     </div>
   );

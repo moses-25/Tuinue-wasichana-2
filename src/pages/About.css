@@ -1,46 +1,25 @@
-.tw-about {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+.tw-about-page {
+  padding: 2rem;
+  line-height: 1.8;
+}
+
+.about-hero {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.about-intro h1 {
-  font-size: 32px;
-  color: #e75480;
-  margin-bottom: 16px;
+.about-mission,
+.about-values,
+.about-impact {
+  margin-bottom: 2rem;
 }
 
-.about-intro p,
-.about-mission p,
-.about-belief p {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 32px;
-  line-height: 1.6;
+.about-values ul {
+  list-style: disc;
+  padding-left: 2rem;
 }
 
-.about-mission h2,
-.about-belief h2 {
-  font-size: 24px;
-  color: #555;
-  margin-bottom: 12px;
+.about-values li {
+  margin-bottom: 0.5rem;
 }
 
-.about-cta {
-  margin-top: 40px;
-}
-
-.about-btn {
-  padding: 12px 24px;
-  background-color: #e75480;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.about-btn:hover {
-  background-color: #c94f70;
-}
