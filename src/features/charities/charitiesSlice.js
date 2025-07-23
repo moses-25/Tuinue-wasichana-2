@@ -1,65 +1,58 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  fetchCharitiesAPI,
-  fetchCharityByIdAPI,
-  applyCharityAPI
-} from './charitiesAPI';
+import { getAllCharities, getCharityById, applyAsCharity } from './charitiesAPI';
 
-// Async Thunks
+// Thunks (using mock logic)
 export const fetchCharities = createAsyncThunk(
-  'charities/fetchCharities',
+  'charities/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const res = await fetchCharitiesAPI();
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const res = await getAllCharities();
+      return res;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
-export const fetchCharityById = createAsyncThunk(
-  'charities/fetchCharityById',
+export const fetchCharityDetails = createAsyncThunk(
+  'charities/fetchById',
   async (id, thunkAPI) => {
     try {
-      const res = await fetchCharityByIdAPI(id);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const res = await getCharityById(id);
+      return res;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+
     }
   }
 );
 
-export const applyCharity = createAsyncThunk(
-  'charities/applyCharity',
-  async (formData, thunkAPI) => {
+export const submitCharityApplication = createAsyncThunk(
+  'charities/submitApplication',
+  async (data, thunkAPI) => {
     try {
-      const res = await applyCharityAPI(formData);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const res = await applyAsCharity(data);
+      return res;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
-// Initial State
-const initialState = {
-  charities: [],
-  selectedCharity: null,
-  loading: false,
-  error: null,
-  successMessage: null
-};
-
-// Slice
 const charitiesSlice = createSlice({
   name: 'charities',
-  initialState,
+  initialState: {
+    list: [],
+    selected: null,
+    loading: false,
+    error: null,
+    applySuccess: false,
+  },
   reducers: {
-    clearMessages: (state) => {
+    clearCharityMessages: (state) => {
       state.error = null;
-      state.successMessage = null;
-    }
+      state.applySuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,41 +62,39 @@ const charitiesSlice = createSlice({
       })
       .addCase(fetchCharities.fulfilled, (state, action) => {
         state.loading = false;
-        state.charities = action.payload;
+        state.list = action.payload;
       })
       .addCase(fetchCharities.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(fetchCharityById.pending, (state) => {
+      .addCase(fetchCharityDetails.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.selected = null;
       })
-      .addCase(fetchCharityById.fulfilled, (state, action) => {
+      .addCase(fetchCharityDetails.fulfilled, (state, action) => {
         state.loading = false;
-        state.selectedCharity = action.payload;
+        state.selected = action.payload;
       })
-      .addCase(fetchCharityById.rejected, (state, action) => {
+      .addCase(fetchCharityDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(applyCharity.pending, (state) => {
+      .addCase(submitCharityApplication.pending, (state) => {
         state.loading = true;
-        state.error = null;
-        state.successMessage = null;
+        state.applySuccess = false;
       })
-      .addCase(applyCharity.fulfilled, (state, action) => {
+      .addCase(submitCharityApplication.fulfilled, (state) => {
         state.loading = false;
-        state.successMessage = 'Application submitted successfully!';
+        state.applySuccess = true;
       })
-      .addCase(applyCharity.rejected, (state, action) => {
+      .addCase(submitCharityApplication.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
-  }
+  },
 });
-
-// Export
-export const { clearMessages } = charitiesSlice.actions;
+export const { clearCharityMessages } = charitiesSlice.actions;
 export default charitiesSlice.reducer;
+
 

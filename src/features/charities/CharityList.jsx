@@ -2,28 +2,26 @@ import React, { useEffect } from 'react';
 import './CharityList.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCharities } from '../charitiesSlice';
+import CharityCard from '../../../components/CharityCard/CharityCard';
 
 const CharityList = () => {
   const dispatch = useDispatch();
   const { charities, loading, error } = useSelector((state) => state.charities);
 
-  //useEffect(() => {
-   // dispatch(fetchCharities());
-  //}, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCharities());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading charities...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
-    <div className="charity-list">
-      <h2>Explore Charities</h2>
-      {loading && <p>Loading...</p>}
-      {error && <p className="error">{error}</p>}
-      <div className="charities">
+    <div className="tw-charity-list">
+      <h2>Partner Charities</h2>
+      <p>Explore and support organizations making a difference for girls' education.</p>
+      <div className="charity-grid">
         {charities.map((charity) => (
-          <div key={charity.id} className="charity-card">
-            <img src={charity.image} alt={charity.name} />
-            <h3>{charity.name}</h3>
-            <p>{charity.mission}</p>
-            <a href={`/charities/${charity.id}`}>View More</a>
-          </div>
+          <CharityCard key={charity.id} charity={charity} />
         ))}
       </div>
     </div>

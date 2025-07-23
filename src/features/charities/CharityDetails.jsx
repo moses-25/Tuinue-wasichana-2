@@ -1,32 +1,49 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './CharityDetails.css';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCharityById } from '../charitiesSlice';
+import { useParams, Link } from 'react-router-dom';
+
+// Mock data (replace with Redux/store later if needed)
+const mockCharities = [
+  {
+    id: '1',
+    name: 'Hope for Girls',
+    description: 'Providing scholarships, mentorship, and hygiene kits to schoolgirls in rural Kenya.',
+    image: '/assets/images/charity1.jpg',
+    tags: ['Education', 'Kenya', 'Girls'],
+  },
+  {
+    id: '2',
+    name: 'Bright Future Foundation',
+    description: 'Ensuring girls in Uganda stay in school through meals and supplies.',
+    image: '/assets/images/charity2.jpg',
+    tags: ['Nutrition', 'Uganda', 'Access to Education'],
+  },
+];
 
 const CharityDetails = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { selectedCharity, loading, error } = useSelector((state) => state.charities);
+  const charity = mockCharities.find((charity) => charity.id === id);
 
-  //useEffect(() => {
-    //dispatch(fetchCharityById(id));
-  //}, [dispatch, id]);
-
-  if (loading) return <p>Loading charity details...</p>;
-  if (error) return <p className="error">{error}</p>;
-  if (!selectedCharity) return <p>Charity not found.</p>;
+  if (!charity) {
+    return <p>Charity not found.</p>;
+  }
 
   return (
     <div className="charity-details">
-      <h2>{selectedCharity.name}</h2>
-      <img src={selectedCharity.image} alt={selectedCharity.name} />
-      <p><strong>Mission:</strong> {selectedCharity.mission}</p>
-      <p><strong>Location:</strong> {selectedCharity.location}</p>
-      <p><strong>Contact:</strong> {selectedCharity.email}</p>
-      <p><strong>Website:</strong> <a href={selectedCharity.website} target="_blank" rel="noopener noreferrer">{selectedCharity.website}</a></p>
+      <h2>{charity.name}</h2>
+      <img src={charity.image} alt={charity.name} />
+      <p className="description">{charity.description}</p>
+
+      <div className="charity-meta">
+        {charity.tags.map((tag, index) => (
+          <span key={index}>#{tag}</span>
+        ))}
+      </div>
+
+      <Link to="/donate" className="donate-button">Donate Now</Link>
     </div>
   );
 };
 
 export default CharityDetails;
+

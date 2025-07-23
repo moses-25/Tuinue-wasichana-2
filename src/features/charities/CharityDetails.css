@@ -1,25 +1,58 @@
 .charity-details {
-  max-width: 700px;
-  margin: 40px auto;
   padding: 2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.charity-details h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
 }
 
 .charity-details img {
   width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
-.charity-details h2 {
-  color: #e75480;
-  margin-bottom: 1rem;
-}
-
-.charity-details p {
-  margin-bottom: 1rem;
+.charity-details p.description {
   font-size: 1rem;
-  color: #333;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.5rem;
 }
+
+.charity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.charity-meta span {
+  background-color: #f4f4f4;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.donate-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #e91e63;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.donate-button:hover {
+  background-color: #d81b60;
+}
+
