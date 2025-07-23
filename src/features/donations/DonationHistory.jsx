@@ -1,31 +1,44 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './DonationHistory.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchDonationHistory } from '../donationsSlice';
+
+const mockDonations = [
+  {
+    id: 1,
+    charityName: 'Educate Girls Foundation',
+    amount: 1500,
+    frequency: 'Monthly',
+    date: '2025-07-01',
+  },
+  {
+    id: 2,
+    charityName: 'Hope for Her',
+    amount: 1000,
+    frequency: 'One-Time',
+    date: '2025-06-15',
+  },
+];
 
 const DonationHistory = () => {
-  const dispatch = useDispatch();
-  const { history, loading, error } = useSelector((state) => state.donations);
-
- // useEffect(() => {
-   // dispatch(fetchDonationHistory());
-  //}, [dispatch]);
-
-  if (loading) return <p>Loading donation history...</p>;
-  if (error) return <p className="error">{error}</p>;
-  if (!history.length) return <p>You haven't made any donations yet.</p>;
+  if (!mockDonations.length) return <p>No donation history yet.</p>;
 
   return (
     <div className="donation-history">
       <h2>Your Donation History</h2>
       <ul>
-        {history.map((donation) => (
+        {mockDonations.map((donation) => (
           <li key={donation.id}>
-            <p><strong>Charity:</strong> {donation.charityName}</p>
-            <p><strong>Amount:</strong> ${donation.amount}</p>
-            <p><strong>Frequency:</strong> {donation.frequency}</p>
-            <p><strong>Date:</strong> {new Date(donation.date).toLocaleDateString()}</p>
-            <hr />
+            <p>
+              <strong>Charity:</strong> {donation.charityName}
+            </p>
+            <p>
+              <strong>Amount:</strong> KES {donation.amount}
+            </p>
+            <p>
+              <strong>Frequency:</strong> {donation.frequency}
+            </p>
+            <p>
+              <strong>Date:</strong> {new Date(donation.date).toLocaleDateString()}
+            </p>
           </li>
         ))}
       </ul>
@@ -34,3 +47,4 @@ const DonationHistory = () => {
 };
 
 export default DonationHistory;
+

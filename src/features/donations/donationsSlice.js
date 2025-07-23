@@ -1,20 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { submitDonationAPI, fetchDonationHistoryAPI } from './donationsAPI';
 
-// Thunk: Make a donation
 export const makeDonation = createAsyncThunk(
   'donations/makeDonation',
   async (data, thunkAPI) => {
     try {
       const res = await submitDonationAPI(data);
-      return res.data;
+      return res.data.donation;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue('Failed to process donation');
     }
   }
 );
 
-// Thunk: Fetch donation history
 export const fetchDonationHistory = createAsyncThunk(
   'donations/fetchDonationHistory',
   async (_, thunkAPI) => {
@@ -22,7 +20,7 @@ export const fetchDonationHistory = createAsyncThunk(
       const res = await fetchDonationHistoryAPI();
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue('Failed to load donation history');
     }
   }
 );
@@ -37,27 +35,25 @@ const donationsSlice = createSlice({
   },
   reducers: {
     clearDonationMessages: (state) => {
-      state.successMessage = null;
       state.error = null;
+      state.successMessage = null;
     },
   },
   extraReducers: (builder) => {
     builder
-      // Make donation
       .addCase(makeDonation.pending, (state) => {
         state.loading = true;
         state.error = null;
-        state.successMessage = null;
       })
       .addCase(makeDonation.fulfilled, (state, action) => {
         state.loading = false;
         state.successMessage = 'Donation successful!';
+        state.history = [...state.history, action.payload];
       })
       .addCase(makeDonation.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
-      // Fetch history
       .addCase(fetchDonationHistory.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -75,3 +71,4 @@ const donationsSlice = createSlice({
 
 export const { clearDonationMessages } = donationsSlice.actions;
 export default donationsSlice.reducer;
+

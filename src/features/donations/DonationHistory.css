@@ -1,16 +1,14 @@
 .donation-history {
-    max-width: 700px;
-    margin: 2rem auto;
     padding: 2rem;
-    background: #fff;
+    max-width: 600px;
+    margin: auto;
+    background: #fafafa;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
   
   .donation-history h2 {
-    color: #e75480;
-    margin-bottom: 1rem;
     text-align: center;
+    margin-bottom: 1.5rem;
   }
   
   .donation-history ul {
@@ -19,11 +17,10 @@
   }
   
   .donation-history li {
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   }
-  
-  .donation-history hr {
-    margin-top: 0.8rem;
-    border: 0.5px solid #eee;
-  }
+

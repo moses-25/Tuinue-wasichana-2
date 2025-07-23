@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import './DonationForm.css';
-import { useDispatch } from 'react-redux';
-import { makeDonation } from '../donationsSlice';
+import Button from '../../../components/Button.jsx';
 
-const DonationForm = ({ charityId }) => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
+const DonationForm = ({ onDonate }) => {
+  const [form, setForm] = useState({
     amount: '',
-    frequency: 'once',
-    message: '',
+    frequency: 'one-time',
+    paymentMethod: '',
     anonymous: false,
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
+    setForm((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
@@ -22,34 +20,65 @@ const DonationForm = ({ charityId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(makeDonation({ ...formData, charityId }));
+    onDonate(form);
+    setForm({
+      amount: '',
+      frequency: 'one-time',
+      paymentMethod: '',
+      anonymous: false,
+    });
   };
 
   return (
-    <div className="donation-form">
-      <h2>Make a Donation</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Amount (USD)</label>
-        <input type="number" name="amount" required value={formData.amount} onChange={handleChange} />
+    <form onSubmit={handleSubmit} className="donation-form">
+      <label>
+        Amount (KES)
+        <input
+          type="number"
+          name="amount"
+          value={form.amount}
+          onChange={handleChange}
+          required
+        />
+      </label>
 
-        <label>Frequency</label>
-        <select name="frequency" value={formData.frequency} onChange={handleChange}>
-          <option value="once">One-Time</option>
+      <label>
+        Frequency
+        <select name="frequency" value={form.frequency} onChange={handleChange}>
+          <option value="one-time">One-Time</option>
           <option value="monthly">Monthly</option>
         </select>
+      </label>
 
-        <label>Message (optional)</label>
-        <textarea name="message" value={formData.message} onChange={handleChange}></textarea>
+      <label>
+        Payment Method
+        <select
+          name="paymentMethod"
+          value={form.paymentMethod}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select...</option>
+          <option value="mpesa">M-Pesa</option>
+          <option value="paypal">PayPal</option>
+          <option value="card">Card</option>
+        </select>
+      </label>
 
-        <label>
-          <input type="checkbox" name="anonymous" checked={formData.anonymous} onChange={handleChange} />
-          Donate anonymously
-        </label>
+      <label className="checkbox">
+        <input
+          type="checkbox"
+          name="anonymous"
+          checked={form.anonymous}
+          onChange={handleChange}
+        />
+        Donate anonymously
+      </label>
 
-        <button type="submit">Donate</button>
-      </form>
-    </div>
+      <Button text="Donate Now" type="submit" />
+    </form>
   );
 };
 
 export default DonationForm;
+
