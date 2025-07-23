@@ -1,12 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  getAdminStatsAPI,
-  getPendingCharitiesAPI,
-  approveCharityAPI,
-  rejectCharityAPI
-} from './adminAPI';
+import { getAdminStatsAPI, getPendingCharitiesAPI, approveCharityAPI, rejectCharityAPI } from './adminAPI';
 
-// Thunks
 export const fetchAdminStats = createAsyncThunk(
   'admin/fetchStats',
   async (_, thunkAPI) => {
@@ -14,7 +8,7 @@ export const fetchAdminStats = createAsyncThunk(
       const res = await getAdminStatsAPI();
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -26,7 +20,7 @@ export const fetchPendingCharities = createAsyncThunk(
       const res = await getPendingCharitiesAPI();
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -38,7 +32,7 @@ export const approveCharity = createAsyncThunk(
       await approveCharityAPI(id);
       return id;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -50,12 +44,11 @@ export const rejectCharity = createAsyncThunk(
       await rejectCharityAPI(id);
       return id;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
-// Slice
 const adminSlice = createSlice({
   name: 'admin',
   initialState: {
@@ -67,7 +60,6 @@ const adminSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Dashboard Stats
       .addCase(fetchAdminStats.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -80,7 +72,6 @@ const adminSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Pending Charities
       .addCase(fetchPendingCharities.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -93,15 +84,18 @@ const adminSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Approve Charity
       .addCase(approveCharity.fulfilled, (state, action) => {
-        state.pendingCharities = state.pendingCharities.filter(c => c.id !== action.payload);
+        state.pendingCharities = state.pendingCharities.filter(
+          (c) => c.id !== action.payload
+        );
       })
-      // Reject Charity
       .addCase(rejectCharity.fulfilled, (state, action) => {
-        state.pendingCharities = state.pendingCharities.filter(c => c.id !== action.payload);
+        state.pendingCharities = state.pendingCharities.filter(
+          (c) => c.id !== action.payload
+        );
       });
-  }
+  },
 });
 
 export default adminSlice.reducer;
+

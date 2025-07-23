@@ -1,24 +1,37 @@
-// import axios from 'axios';
-//
-// const BASE_URL = 'https://your-backend-api.com/api/admin'; // Replace with your actual backend base URL
-//
-// // Get dashboard stats
-// export const getAdminStatsAPI = async () => {
-//   return await axios.get(`${BASE_URL}/stats`);
-// };
-//
-// // Get pending charity applications
-// export const getPendingCharitiesAPI = async () => {
-//   return await axios.get(`${BASE_URL}/charities/pending`);
-// };
-//
-// // Approve charity application
-// export const approveCharityAPI = async (id) => {
-//   return await axios.patch(`${BASE_URL}/charities/${id}/approve`);
-// };
-//
-// // Reject charity application
-// export const rejectCharityAPI = async (id) => {
-//   return await axios.delete(`${BASE_URL}/charities/${id}/reject`);
-// };
-
+let mockPendingCharities = [
+    {
+      id: 'charity-1',
+      name: 'Girls for Change',
+      description: 'Focused on menstrual health education and school supplies.',
+    },
+    {
+      id: 'charity-2',
+      name: 'Educate Her',
+      description: 'Provides scholarships to vulnerable girls in rural Kenya.',
+    },
+  ];
+  
+  export const getAdminStatsAPI = async () => {
+    return {
+      data: {
+        totalDonors: 124,
+        totalAmount: 843000,
+        pendingCharities: mockPendingCharities.length,
+      },
+    };
+  };
+  
+  export const getPendingCharitiesAPI = async () => {
+    return { data: mockPendingCharities };
+  };
+  
+  export const approveCharityAPI = async (id) => {
+    mockPendingCharities = mockPendingCharities.filter((c) => c.id !== id);
+    return { data: { success: true } };
+  };
+  
+  export const rejectCharityAPI = async (id) => {
+    mockPendingCharities = mockPendingCharities.filter((c) => c.id !== id);
+    return { data: { success: true } };
+  };
+  

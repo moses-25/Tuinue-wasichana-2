@@ -5,15 +5,14 @@
 .charity-list {
   list-style: none;
   padding: 0;
-  margin-top: 2rem;
 }
 
 .charity-card {
   background: #fff;
-  border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
 }
 
 .charity-card h3 {
@@ -22,24 +21,23 @@
 
 .actions {
   margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
+}
+
+.actions button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .approve {
-  background-color: #4caf50;
+  background: #4caf50;
   color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .reject {
-  background-color: #f44336;
+  background: #f44336;
   color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
+

@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react';
 import './CharityApproval.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPendingCharities, approveCharity, rejectCharity } from '../adminSlice';
+import {
+  fetchPendingCharities,
+  approveCharity,
+  rejectCharity,
+} from '../adminSlice';
 
 const CharityApproval = () => {
   const dispatch = useDispatch();
   const { pendingCharities, loading, error } = useSelector((state) => state.admin);
 
-  //useEffect(() => {
-    //dispatch(fetchPendingCharities());
-  //}, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchPendingCharities());
+  }, [dispatch]);
 
   const handleApprove = (id) => {
     dispatch(approveCharity(id));
@@ -34,8 +38,12 @@ const CharityApproval = () => {
               <h3>{charity.name}</h3>
               <p>{charity.description}</p>
               <div className="actions">
-                <button onClick={() => handleApprove(charity.id)} className="approve">Approve</button>
-                <button onClick={() => handleReject(charity.id)} className="reject">Reject</button>
+                <button onClick={() => handleApprove(charity.id)} className="approve">
+                  Approve
+                </button>
+                <button onClick={() => handleReject(charity.id)} className="reject">
+                  Reject
+                </button>
               </div>
             </li>
           ))}
@@ -46,3 +54,4 @@ const CharityApproval = () => {
 };
 
 export default CharityApproval;
+
