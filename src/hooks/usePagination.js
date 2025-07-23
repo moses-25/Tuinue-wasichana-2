@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const usePagination = (data = [], itemsPerPage = 6) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const currentData = data.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const totalPages = useMemo(() => Math.ceil(data.length / itemsPerPage), [data, itemsPerPage]);
+
+  const currentData = useMemo(() => {
+    return data.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [currentPage, data, itemsPerPage]);
 
   const goToNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
@@ -32,3 +35,4 @@ const usePagination = (data = [], itemsPerPage = 6) => {
 };
 
 export default usePagination;
+

@@ -12,17 +12,11 @@ const useFetch = (url, options = {}) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url, options);
-        if (isMounted) {
-          setData(response.data);
-        }
+        if (isMounted) setData(response.data);
       } catch (err) {
-        if (isMounted) {
-          setError(err.message || 'An error occurred');
-        }
+        if (isMounted) setError(err.message || 'Error occurred');
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        if (isMounted) setLoading(false);
       }
     };
 
@@ -37,3 +31,4 @@ const useFetch = (url, options = {}) => {
 };
 
 export default useFetch;
+
