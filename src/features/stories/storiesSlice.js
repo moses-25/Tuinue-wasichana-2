@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getAllStoriesAPI, getStoryByIdAPI } from './storiesAPI';
 
-// Thunk to fetch all stories
 export const fetchStories = createAsyncThunk(
   'stories/fetchStories',
   async (_, thunkAPI) => {
@@ -9,12 +8,11 @@ export const fetchStories = createAsyncThunk(
       const res = await getAllStoriesAPI();
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
-// Thunk to fetch a single story by ID
 export const fetchStoryById = createAsyncThunk(
   'stories/fetchStoryById',
   async (id, thunkAPI) => {
@@ -22,7 +20,7 @@ export const fetchStoryById = createAsyncThunk(
       const res = await getStoryByIdAPI(id);
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -33,7 +31,7 @@ const storiesSlice = createSlice({
     stories: [],
     selectedStory: null,
     loading: false,
-    error: null
+    error: null,
   },
   reducers: {
     clearStoryError: (state) => {
@@ -41,7 +39,7 @@ const storiesSlice = createSlice({
     },
     clearSelectedStory: (state) => {
       state.selectedStory = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -70,8 +68,9 @@ const storiesSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       });
-  }
+  },
 });
 
 export const { clearStoryError, clearSelectedStory } = storiesSlice.actions;
 export default storiesSlice.reducer;
+

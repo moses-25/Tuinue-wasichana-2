@@ -30,3 +30,4 @@ const StoryDetails = () => {
 };
 
 export default StoryDetails;
+
