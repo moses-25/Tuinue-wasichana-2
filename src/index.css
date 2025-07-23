@@ -1,7 +1,4 @@
-:root {
-  --primary-color: #ec407a;
-}
-
+/* Simple Reset + Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +6,17 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #fffafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
 }
