@@ -112,19 +112,12 @@ tuinue-wasichana-frontend/
 │   │   ├── routes.js
 │   │   └── roles.js
 │   │
-│   ├── app/                          # App setup and config
-│   │   ├── App.jsx
-│   │   ├── App.css
+│   ├── app/                         
 │   │   ├── routes.jsx                # React Router setup
 │   │   └── store.js                  # Redux store
 │   │
 │   ├── index.js                      # React root
 │   └── index.css                     # Global reset + variables (if any)
-│
-├── tests/                            # Unit/integration tests (if needed)
-│   ├── components/
-│   ├── pages/
-│   └── features/
 │
 ├── .env
 ├── .gitignore

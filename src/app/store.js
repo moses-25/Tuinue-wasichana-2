@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+
+// Slices
 import authReducer from '../features/auth/authSlice';
 import charitiesReducer from '../features/charities/charitiesSlice';
 import donationsReducer from '../features/donations/donationsSlice';
@@ -16,3 +18,4 @@ const store = configureStore({
 });
 
 export default store;
+
