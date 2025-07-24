@@ -47,7 +47,7 @@ const CharityApply = () => {
           Brief Description
           <textarea name="description" value={form.description} onChange={handleChange} required />
         </label>
-        <Button type="submit" text="Submit Application" />
+        <Button type="submit">Submit Application</Button>
       </form>
     </div>
   );

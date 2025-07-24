@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import Button from '../../components/Button';
+import Button from '../components/Button.jsx';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -74,7 +74,7 @@ const Contact = () => {
           />
         </label>
 
-        <Button text="Send Message" type="submit" />
+        <Button type="submit">Send Message</Button>
       </form>
     </div>
   );

@@ -71,46 +71,38 @@ select:focus {
   color: #444;
 }
 
-button,
-.donation-form button {
-  background-color: #db2675;
-  color: white;
-  font-weight: 600;
-  padding: 0.9rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  font-size: 1rem;
-}
-
-button:hover,
-.donation-form button:hover {
-  background-color: #b71c5a;
-}
-
-/* Responsive */
-
-@media (max-width: 480px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .tw-donate {
-    padding: 1.2rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
   }
 
   .tw-donate h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tw-donate {
+    margin: 1rem;
+    padding: 1rem;
   }
 
-  .form-group label {
-    font-size: 0.95rem;
+  .tw-donate h1 {
+    font-size: 1.5rem;
   }
 
-  input,
-  select {
-    font-size: 0.95rem;
+  .form-group label,
+  input[type='number'],
+  select,
+  .checkbox label {
+    font-size: 0.9rem;
   }
 
   button {
-    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 

@@ -50,7 +50,7 @@ let mockCharities = [
         const newCharity = {
           ...data,
           id: (mockCharities.length + 1).toString(),
-          image: '/assets/images/default.jpg',
+          image: 'default.jpg',
         };
         mockCharities.push(newCharity);
         resolve({ message: 'Application submitted' });

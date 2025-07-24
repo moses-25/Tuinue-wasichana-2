@@ -10,7 +10,7 @@ const mockStories = [
     {
       id: '2',
       title: 'From Struggles to Scholarships',
-      image: '/assets/images/scholar.jpg',
+      image: 'Image 3.jpg',
       content:
         'Many girls drop out due to lack of support. But programs like Tuinue Wasichana are reversing this trend...',
       author: 'Faith L.',

@@ -36,3 +36,17 @@
   color: #444;
 }
 
+@media (max-width: 480px) {
+  .modal-box {
+    padding: 1rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .modal-body {
+    font-size: 0.85rem;
+  }
+}
+

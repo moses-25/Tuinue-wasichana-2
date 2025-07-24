@@ -1,6 +1,6 @@
 import React from 'react';
 import './FAQ.css';
-import FAQItem from '../../components/FAQItem';
+import FAQItem from '../components/FAQItem.jsx';
 
 const faqData = [
   {

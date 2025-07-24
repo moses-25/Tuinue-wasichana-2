@@ -75,7 +75,7 @@ const DonationForm = ({ onDonate }) => {
         Donate anonymously
       </label>
 
-      <Button text="Donate Now" type="submit" />
+      <Button type="submit">Donate Now</Button>
     </form>
   );
 };

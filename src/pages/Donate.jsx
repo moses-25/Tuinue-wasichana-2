@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Donate.css';
-import Button from '../../components/Button';
+import Button from '../components/Button.jsx';
 
 const Donate = () => {
   const [form, setForm] = useState({
@@ -86,7 +86,7 @@ const Donate = () => {
             Donate anonymously
           </label>
         </div>
-        <Button text="Proceed to Donate" type="submit" />
+        <Button type="submit">Proceed to Donate</Button>
       </form>
     </div>
   );

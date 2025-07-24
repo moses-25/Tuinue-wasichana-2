@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Charities.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCharities } from '../../features/charities/charitiesSlice';
+import { fetchCharities } from '../features/charities/charitiesSlice.js';
 import { Link } from 'react-router-dom';
 
 const Charities = () => {

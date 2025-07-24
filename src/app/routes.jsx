@@ -1,27 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Layouts
-import MainLayout from '../layouts/MainLayout/MainLayout';
-import AuthLayout from '../layouts/AuthLayout/AuthLayout';
+import MainLayout from '../layouts/MainLayout.jsx';
+import AuthLayout from '../layouts/AuthLayout.jsx';
 
 // Pages
-import Home from '../pages/Home/Home';
-import About from '../pages/About/About';
-import Programs from '../pages/Programs/Programs';
-import Stories from '../pages/Stories/Stories';
-import StoryDetails from '../features/stories/StoryDetails/StoryDetails';
-import Charities from '../pages/Charities/Charities';
-import CharityDetails from '../pages/CharityDetails/CharityDetails';
-import Donate from '../pages/Donate/Donate';
-import FAQ from '../pages/FAQ/FAQ';
-import Contact from '../pages/Contact/Contact';
-import NotFound from '../pages/NotFound/NotFound';
-import Dashboard from '../pages/Dashboard/Dashboard';
+import Home from '../pages/Home.jsx';
+import About from '../pages/About.jsx';
+import Programs from '../pages/Programs.jsx';
+import Stories from '../pages/Stories.jsx';
+import StoryDetails from '../features/stories/StoryDetails.jsx';
+import Charities from '../pages/Charities.jsx';
+import CharityDetails from '../pages/CharityDetails.jsx';
+import Donate from '../pages/Donate.jsx';
+import FAQ from '../pages/FAQ.jsx';
+import Contact from '../pages/Contact.jsx';
+import NotFound from '../pages/NotFound.jsx';
+import Dashboard from '../pages/Dashboard.jsx';
+import Login from '../features/auth/Login.jsx';
+import Register from '../features/auth/Register.jsx';
 
 const AppRoutes = () => {
   return (
-    <Router>
       <Routes>
         {/* Public-facing layout */}
         <Route element={<MainLayout />}>
@@ -32,7 +33,6 @@ const AppRoutes = () => {
           <Route path="/stories/:id" element={<StoryDetails />} />
           <Route path="/charities" element={<Charities />} />
           <Route path="/charities/:id" element={<CharityDetails />} />
-          <Route path="/donate" element={<Donate />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
@@ -40,12 +40,14 @@ const AppRoutes = () => {
         {/* Dashboard - protected routes layout */}
         <Route element={<AuthLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
 
         {/* Catch-all */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
   );
 };
 
