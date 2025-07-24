@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from './app/routes';
+import AppRoutes from './routes';
 import './App.css'; // Optional: you can define global layout styles here
 
 const App = () => {
