@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './DonationForm.css';
-import Button from '../../../components/Button.jsx';
+import Button from '../../components/Button';
 
 const DonationForm = ({ onDonate }) => {
   const [form, setForm] = useState({

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CharityApply.css';
-import Button from '../../../components/Button/Button';
+import Button from '../../components/Button';
 
 const CharityApply = () => {
   const [form, setForm] = useState({

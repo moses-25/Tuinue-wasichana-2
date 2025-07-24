@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './CharityList.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCharities } from '../charitiesSlice';
-import CharityCard from '../../../components/CharityCard/CharityCard';
+import CharityCard from '../../components/CharityCard';
 
 const CharityList = () => {
   const dispatch = useDispatch();

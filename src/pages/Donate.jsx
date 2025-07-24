@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Donate.css';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button';
 
 const Donate = () => {
   const [form, setForm] = useState({

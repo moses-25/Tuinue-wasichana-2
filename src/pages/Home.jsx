@@ -1,8 +1,8 @@
 import React from 'react';
 import './Home.css';
-import HeroSection from '../../components/HeroSection/HeroSection';
-import ProgramCard from '../../components/ProgramCard/ProgramCard';
-import StoryCard from '../../components/StoryCard/StoryCard';
+import HeroSection from '../../components/HeroSection';
+import ProgramCard from '../../components/ProgramCard';
+import StoryCard from '../../components/StoryCard';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

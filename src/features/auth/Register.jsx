@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './Register.css';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
@@ -26,10 +26,19 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login to Tuinue Wasichana</h2>
+    <div className="register-container">
+      <h2>Register for Tuinue Wasichana</h2>
       <form onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
+
+        <label htmlFor="name">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          value={form.name}
+          onChange={handleChange}
+        />
 
         <label htmlFor="email">Email</label>
         <input
@@ -49,11 +58,11 @@ const Login = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
 
