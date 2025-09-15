@@ -1,31 +1,78 @@
 .program-card {
-  background-color: #fff;
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  padding: 1.5rem;
+  background-color: var(--neutral-50);
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .program-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-200);
 }
 
-.icon-wrapper img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1rem;
+.icon-wrapper {
+  background-color: var(--primary-100);
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+  transition: all var(--transition-normal);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.program-card:hover .icon-wrapper {
+  background-color: var(--primary-500);
+  transform: scale(1.1);
+}
+
+.icon-wrapper svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--primary-600);
+}
+
+.program-card:hover .icon-wrapper svg {
+  fill: white;
 }
 
 .program-card h3 {
-  color: #e91e63;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-800);
+  font-weight: var(--font-bold);
+  font-size: var(--text-xl);
+  margin-bottom: var(--spacing-3);
+  font-family: var(--font-heading);
 }
 
 .program-card p {
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--neutral-600);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .program-card {
+    padding: var(--spacing-6);
+  }
+  
+  .icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .program-card h3 {
+    font-size: var(--text-lg);
+  }
 }
 

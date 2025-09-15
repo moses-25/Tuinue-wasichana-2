@@ -1,96 +1,169 @@
 .tw-navbar {
-  background: #fff;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #eee;
+  background: var(--neutral-50);
+  padding: var(--spacing-4) var(--spacing-6);
+  box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: all var(--transition-normal);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-brand a {
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
   text-decoration: none;
-  color: #e91e63;
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
 }
 
 .navbar-brand span {
-  color: #333;
+  color: var(--neutral-800);
 }
 
 .navbar-links {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-6);
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .navbar-links li a,
 .navbar-links li button {
   text-decoration: none;
-  color: #333;
-  transition: color 0.3s;
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+  transition: all var(--transition-fast);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  padding: 0;
+  font-size: var(--text-base);
+  padding: var(--spacing-2) 0;
+  position: relative;
+  border-radius: var(--radius-sm);
+}
+
+.navbar-links li a::after,
+.navbar-links li button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-500);
+  transition: width var(--transition-normal);
+}
+
+.navbar-links li a:hover::after,
+.navbar-links li button:hover::after {
+  width: 100%;
 }
 
 .navbar-links li a:hover,
 .navbar-links li button:hover {
-  color: #e91e63;
+  color: var(--primary-600);
 }
 
 .logout-button {
-  color: #e91e63;
-  font-weight: 600;
+  color: var(--primary-600);
+  font-weight: var(--font-semibold);
 }
 
 .donate-nav-btn {
-  background-color: #e91e63;
+  background-color: var(--primary-500);
   color: white !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow);
+  font-weight: var(--font-semibold);
 }
 
 .donate-nav-btn:hover {
-  background-color: #d41a5a;
+  background-color: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Mobile responsiveness */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: var(--text-3xl);
+  color: var(--neutral-800);
+  background: none;
+  border: none;
+  padding: var(--spacing-1);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.menu-icon:hover {
+  background-color: var(--neutral-100);
+}
+
 @media (max-width: 768px) {
   .tw-navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: var(--spacing-4) var(--spacing-4);
+  }
+
+  .navbar-container {
+    padding: 0;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .navbar-links {
-    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    display: none; /* Hidden by default, will be toggled by JS */
+    background-color: var(--neutral-50);
+    flex-direction: column;
+    gap: 0;
+    padding: var(--spacing-2) 0;
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
   }
 
   .navbar-links.active {
-    display: flex;
+    max-height: 500px;
   }
 
   .navbar-links li {
     width: 100%;
     text-align: center;
-    margin: 0.5rem 0;
   }
 
   .navbar-links li a,
   .navbar-links li button {
     display: block;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #eee;
+    padding: var(--spacing-4) 0;
+    border-bottom: 1px solid var(--neutral-100);
   }
 
   .navbar-links li:last-child a,
@@ -98,14 +171,16 @@
     border-bottom: none;
   }
 
-  /* Hamburger icon - you'd need to add this in Navbar.jsx */
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 2rem;
-    top: 1rem;
+  .navbar-links li a::after,
+  .navbar-links li button::after {
+    display: none;
+  }
+
+  .donate-nav-btn {
+    margin-top: var(--spacing-2);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-6);
   }
 }
 

@@ -1,31 +1,56 @@
 .tw-donate {
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  font-family: 'Segoe UI', sans-serif;
+  max-width: 700px;
+  margin: var(--spacing-12) auto;
+  padding: var(--spacing-8);
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.tw-donate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+}
+
+.tw-donate-header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
 }
 
 .tw-donate h1 {
-  font-size: 2rem;
-  color: #db2675;
-  margin-bottom: 0.5rem;
-  text-align: center;
+  font-size: var(--text-4xl);
+  color: var(--neutral-800);
+  margin-bottom: var(--spacing-3);
+  font-weight: var(--font-bold);
+  font-family: var(--font-heading);
 }
 
 .tw-donate p {
   text-align: center;
-  color: #555;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-2);
+  font-size: var(--text-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .donation-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: var(--spacing-6);
+  background: white;
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
 .form-group {
@@ -34,75 +59,194 @@
 }
 
 .form-group label {
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: #333;
-}
-
-input[type='number'],
-select {
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-input[type='number']:focus,
-select:focus {
-  border-color: #db2675;
-  outline: none;
-}
-
-.checkbox {
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--spacing-2);
+  color: var(--neutral-700);
+  font-size: var(--text-base);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: var(--spacing-2);
 }
 
-.checkbox input {
-  width: 1rem;
-  height: 1rem;
+.form-group label.required::after {
+  content: "*";
+  color: var(--error);
+  margin-left: var(--spacing-1);
 }
 
-.checkbox label {
+.form-control {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--neutral-200);
+  font-size: var(--text-base);
+  transition: all var(--transition-fast);
+  background-color: var(--neutral-50);
+}
+
+.form-control:focus {
+  border-color: var(--primary-500);
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 42, 127, 0.1);
+}
+
+.form-control.error {
+  border-color: var(--error);
+  background-color: #fef2f2;
+}
+
+.form-control::placeholder {
+  color: var(--neutral-400);
+}
+
+.amount-presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-2);
+}
+
+.amount-btn {
+  padding: var(--spacing-3);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  background: white;
+  font-weight: var(--font-semibold);
+  color: var(--neutral-700);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.amount-btn:hover,
+.amount-btn.active {
+  border-color: var(--primary-500);
+  background-color: var(--primary-50);
+  color: var(--primary-700);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-100);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.checkbox-group:hover {
+  background-color: var(--neutral-200);
+}
+
+.checkbox-group input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--primary-500);
+  cursor: pointer;
+}
+
+.checkbox-group label {
   margin: 0;
-  font-weight: normal;
-  color: #444;
+  font-weight: var(--font-normal);
+  color: var(--neutral-700);
+  cursor: pointer;
+  flex: 1;
+}
+
+.form-error {
+  color: var(--error);
+  font-size: var(--text-sm);
+  margin-top: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.form-error svg {
+  flex-shrink: 0;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+  color: white !important;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-lg);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: var(--spacing-4);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:disabled {
+  background: var(--neutral-300);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .tw-donate {
-    margin: 1.5rem;
-    padding: 1.5rem;
+    margin: var(--spacing-8) var(--spacing-4);
+    padding: var(--spacing-6);
   }
 
   .tw-donate h1 {
-    font-size: 1.8rem;
+    font-size: var(--text-3xl);
+  }
+  
+  .donation-form {
+    padding: var(--spacing-6);
+  }
+  
+  .amount-presets {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .tw-donate {
-    margin: 1rem;
-    padding: 1rem;
+    margin: var(--spacing-6) var(--spacing-3);
+    padding: var(--spacing-4);
   }
 
   .tw-donate h1 {
-    font-size: 1.5rem;
+    font-size: var(--text-2xl);
   }
-
+  
+  .tw-donate p {
+    font-size: var(--text-base);
+  }
+  
+  .donation-form {
+    padding: var(--spacing-4);
+  }
+  
   .form-group label,
-  input[type='number'],
-  select,
-  .checkbox label {
-    font-size: 0.9rem;
+  .form-control,
+  .amount-btn {
+    font-size: var(--text-sm);
   }
-
-  button {
-    padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
+  
+  .submit-btn {
+    padding: var(--spacing-3) var(--spacing-5);
+    font-size: var(--text-base);
+  }
+  
+  .amount-presets {
+    grid-template-columns: 1fr;
   }
 }
 

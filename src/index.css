@@ -1,15 +1,26 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 /* Simple Reset + Global Styles */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: var(--font-primary);
+  background-color: var(--neutral-50);
+  color: var(--neutral-800);
   line-height: 1.6;
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
 }
 
 a {
@@ -19,4 +30,61 @@ a {
 
 ul {
   list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* Section Spacing */
+.section {
+  padding: var(--spacing-16) 0;
+}
+
+.section--sm {
+  padding: var(--spacing-8) 0;
+}
+
+.section--lg {
+  padding: var(--spacing-20) 0;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-500);
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+  border-radius: var(--radius-sm);
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
 }

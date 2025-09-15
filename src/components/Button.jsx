@@ -1,9 +1,31 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ children, onClick, type = 'button', variant = 'primary' }) => {
+const Button = ({ 
+  children, 
+  onClick, 
+  type = 'button', 
+  variant = 'primary', 
+  size = 'md',
+  block = false,
+  disabled = false,
+  ...props 
+}) => {
+  const classNames = [
+    'btn',
+    variant,
+    size !== 'md' ? `btn-${size}` : '',
+    block ? 'btn-block' : '',
+  ].filter(Boolean).join(' ');
+
   return (
-    <button className={`btn ${variant}`} onClick={onClick} type={type}>
+    <button 
+      className={classNames} 
+      onClick={onClick} 
+      type={type}
+      disabled={disabled}
+      {...props}
+    >
       {children}
     </button>
   );
